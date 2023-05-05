@@ -11,11 +11,15 @@
 import HeaderComponent from "../components/HeaderComponent.vue";
 import FooterComponent from "../components/FooterComponent.vue";
 
+import HomePage from "../pages/HomePage.vue";
+
 export default {
     name: 'App',
     components: {
         FooterComponent,
         HeaderComponent,
+
+        HomePage,
     }
 }
 </script>
