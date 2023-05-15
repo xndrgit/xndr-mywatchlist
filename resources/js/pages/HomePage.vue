@@ -1,18 +1,24 @@
 <template>
     <div>
         <h1>Home</h1>
-        {{ searchMoviesGift }}
+        <MoviesListComponent v-for="movie in foundedMoviesGift" :key="movie.id" :movie="movie"/>
+
     </div>
 </template>
 
 <script>
+import MoviesListComponent from "../components/MoviesListComponent.vue";
+
 export default {
     name: 'HomePage',
     mounted() {
         console.log('HomePage mounted.')
     },
+    components: {
+        MoviesListComponent,
+    },
     props: {
-        searchMoviesGift: String,
+        foundedMoviesGift: Array,
     }
 }
 </script>
