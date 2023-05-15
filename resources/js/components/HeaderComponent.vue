@@ -25,8 +25,11 @@
                     </li>
                 </ul>
                 <form class="form-inline ml-auto">
-                    <input aria-label="Search" class="form-control mr-sm-1" placeholder="Search" type="search">
-                    <button class="btn btn-danger my-2 my-sm-0" type="submit">Search</button>
+                    <input v-model="searchMovies" aria-label="Search" class="form-control mr-sm-1" placeholder="Search"
+                           type="search">
+                    <button class="btn btn-danger my-2 my-sm-0" type="submit"
+                            @click.prevent="$emit('searchMovies', searchMovies)">Search
+                    </button>
                 </form>
             </div>
         </nav>
@@ -37,8 +40,9 @@
 <script>
 export default {
     data: function (){
-        return{
+        return {
             srcLogo: 'https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png',
+            searchMovies: '',
         }
     },
     mounted() {

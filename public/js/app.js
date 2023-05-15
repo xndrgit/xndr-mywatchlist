@@ -1911,7 +1911,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      srcLogo: 'https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png'
+      srcLogo: 'https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png',
+      searchMovies: ''
     };
   },
   mounted: function mounted() {
@@ -1983,7 +1984,42 @@ var render = function render() {
     attrs: {
       to: "/locations"
     }
-  }, [_vm._v("Locations")])], 1)]), _vm._v(" "), _vm._m(1)])], 1)]);
+  }, [_vm._v("Locations")])], 1)]), _vm._v(" "), _c("form", {
+    staticClass: "form-inline ml-auto"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.searchMovies,
+      expression: "searchMovies"
+    }],
+    staticClass: "form-control mr-sm-1",
+    attrs: {
+      "aria-label": "Search",
+      placeholder: "Search",
+      type: "search"
+    },
+    domProps: {
+      value: _vm.searchMovies
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.searchMovies = $event.target.value;
+      }
+    }
+  }), _vm._v(" "), _c("button", {
+    staticClass: "btn btn-danger my-2 my-sm-0",
+    attrs: {
+      type: "submit"
+    },
+    on: {
+      click: function click($event) {
+        $event.preventDefault();
+        return _vm.$emit("searchMovies", _vm.searchMovies);
+      }
+    }
+  }, [_vm._v("Search\n                ")])])])], 1)]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -2001,24 +2037,6 @@ var staticRenderFns = [function () {
   }, [_c("span", {
     staticClass: "navbar-toggler-icon"
   })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("form", {
-    staticClass: "form-inline ml-auto"
-  }, [_c("input", {
-    staticClass: "form-control mr-sm-1",
-    attrs: {
-      "aria-label": "Search",
-      placeholder: "Search",
-      type: "search"
-    }
-  }), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-danger my-2 my-sm-0",
-    attrs: {
-      type: "submit"
-    }
-  }, [_vm._v("Search")])]);
 }];
 render._withStripped = true;
 

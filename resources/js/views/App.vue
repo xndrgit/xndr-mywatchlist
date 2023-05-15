@@ -1,7 +1,7 @@
 <template>
     <div class="container-lg dark-mode">
-        <HeaderComponent/>
-        <router-view></router-view>
+        <HeaderComponent @searchMovies="searchMoviesFunction"/>
+        <router-view :searchMoviesGift="searchMovies"></router-view>
         <FooterComponent/>
     </div>
 </template>
@@ -20,6 +20,20 @@ export default {
         HeaderComponent,
 
         HomePage,
+    },
+    data: function () {
+        return {
+            // https://developers.themoviedb.org/3/search/search-movies
+            apiKey: 'da54add692c53fb6bacfc3b15da91484',
+            apiUrl: 'https://api.themoviedb.org/3/search/movie?',
+            searchMovies: '',
+        }
+    },
+    methods: {
+        searchMoviesFunction(result) {
+            // console.log(`App.vue is saying:  ${result}`);
+            this.searchMovies = result;
+        }
     }
 }
 </script>
