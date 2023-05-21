@@ -1,14 +1,18 @@
 <template>
-    <div class="card-netflix">
-        <div class="bg-img">
-            <img class="img-fluid" src="https://cdn.dribbble.com/users/354375/screenshots/3309042/cat.gif">
-        </div>
-        <a href="#">
-            <div class="content">
-                <h2>{{ movie.title }}</h2>
+    <div>
+        <div class="card-netflix">
+            <div class="bg-img">
+                <img class="img-fluid" src="https://cdn.dribbble.com/users/354375/screenshots/3309042/cat.gif">
             </div>
-        </a>
+            <a href="#">
+                <div class="content">
+                    <h2>{{ movie.title }}</h2>
+                </div>
+            </a>
+        </div>
+        <h2 class="card-netflix-title">{{ movie.title }}</h2>
     </div>
+
 </template>
 
 <script>
@@ -103,6 +107,18 @@ export default {
             }
         }
     }
+}
+
+.card-netflix-title {
+    font-weight: 300;
+    color: white;
+    font-size: 14px;
+
+    width: 180px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
 }
 
 </style>
