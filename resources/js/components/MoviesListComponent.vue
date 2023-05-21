@@ -1,10 +1,10 @@
 <template>
-    <div>
-        {{ movie.title }}
-    </div>
+        <MovieCardComponent :movie="movie"/>
 </template>
 
 <script>
+import MovieCardComponent from "./MovieCardComponent.vue";
+
 export default {
     mounted() {
     },
@@ -13,7 +13,10 @@ export default {
             type: Object,
             required: true,
         }
-    }
+    },
+    components: {
+        MovieCardComponent,
+    },
 }
 </script>
 
