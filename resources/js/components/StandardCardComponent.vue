@@ -1,12 +1,17 @@
 <template>
     <div>
         <div class="card-netflix">
-            <div class="bg-img">
+
+            <div v-if="movie.poster_path" class="bg-img">
+                <img :src="`https://www.themoviedb.org/t/p/w220_and_h330_face/${movie.poster_path}`" class="img-fluid">
+            </div>
+            <div v-else class="bg-img">
                 <img class="img-fluid" src="https://cdn.dribbble.com/users/354375/screenshots/3309042/cat.gif">
             </div>
+
             <a href="#">
                 <div class="content">
-                    <h2>{{ movie.title }}</h2>
+                    <h2>{{ movie.original_title }}</h2>
                 </div>
             </a>
         </div>
@@ -104,6 +109,11 @@ export default {
                 font-weight: 300;
                 color: white;
                 font-size: 14px;
+
+                width: 180px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
             }
         }
     }

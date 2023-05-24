@@ -1,8 +1,8 @@
 <template>
     <div class="container-lg dark-mode">
 
-        <HeaderComponent @searchMovies="searchMoviesFunction"/>
-        <router-view :foundedMoviesGift="foundedMovies"></router-view>
+        <HeaderComponent @searchAll="searchAllFunction"/>
+        <router-view :foundedMoviesGift="foundedMovies" :foundedSeriesGift="foundedSeries"></router-view>
         <FooterComponent/>
     </div>
 </template>
@@ -29,26 +29,41 @@ export default {
         return {
             // https://developers.themoviedb.org/3/search/search-movies
             apiKey: 'da54add692c53fb6bacfc3b15da91484',
-            apiUrl: 'https://api.themoviedb.org/3/search/movie',
-            searchMovies: '',
+            apiUrlMovie: 'https://api.themoviedb.org/3/search/movie',
+            apiUrlTv: 'https://api.themoviedb.org/3/search/tv',
+
+            searchAll: '',
+            searchAllOld: [],
 
             // founded datas da passare a chi vuoi
             foundedMovies: [],
+            foundedSeries: [],
         }
     },
     methods: {
         // stai salvando il risultato passato mediante la emit nella variabile searchMovies,
         // poi con getMovies richiami questa variabile, non necessaria, essendo che potresti passare il valore della emit direttamente alla funzione getMovies()
-        searchMoviesFunction(result) {
+        searchAllFunction(result) {
             console.log(`App.vue is saying:  ${result}`);
-            this.searchMovies = result;
+            this.searchAll = result;
         },
         getMovies(wha) {
-            axios.get(`${this.apiUrl}?api_key=${this.apiKey}&query=${wha}`)
+            axios.get(`${this.apiUrlMovie}?api_key=${this.apiKey}&query=${wha}`)
                 .then((result) => {
                     // console.log(result);
                     this.foundedMovies = result.data.results;
-                    console.log(this.foundedMovies);
+                    console.log(`founded movies: ${this.foundedMovies}`);
+                })
+                .catch((error) => {
+                    console.warn(error)
+                })
+        },
+        getSeries(wha) {
+            axios.get(`${this.apiUrlTv}?api_key=${this.apiKey}&query=${wha}`)
+                .then((result) => {
+                    // console.log(result);
+                    this.foundedSeries = result.data.results;
+                    console.log(`founded series: ${this.foundedMovies}`);
                 })
                 .catch((error) => {
                     console.warn(error)
@@ -57,9 +72,45 @@ export default {
     },
     watch: {
         // esegui tutte le volte che cambia il valore di searchMovies, richiami getMovies col newVal
-        searchMovies: function (newVal, oldVal) {
+        searchAll: function (newVal, oldVal) {
+
+            // Store the old value in a separate variable or array, if is not present in the array
+            if (!this.searchAllOld.includes(newVal)) {
+                this.searchAllOld.push(newVal);
+            }
+
+
+            // If searchAllOld has more than 15 items, remove the oldest item
+            if (this.searchAllOld.length > 10) {
+                this.searchAllOld.shift();
+            }
+
+
+            //! Save searchAllOld to Local Storage
+            // localStorage.setItem(key, value) is a method that allows you to store data in the user's
+            // browser using the Local Storage API. The key parameter is a string that represents the
+            // name of the data you want to store, and the value parameter is the data itself.
+            // In this case, we're using localStorage.setItem() to store the searchAllOld array in the browser's
+            // Local Storage. We're using JSON.stringify() to convert the array into a string, since Local Storage
+            // can only store strings.
+            // JSON.stringify() is a method that converts a JavaScript object or array into a JSON string.
+            // In this case, we're using it to convert the searchAllOld array into a JSON string that can be stored
+            // in Local Storage.
+            localStorage.setItem('searchAllOld', JSON.stringify(this.searchAllOld));
+            console.log(localStorage);
+
+            console.log(`📢 | old val: ${oldVal}`)
+            console.log(`📢 | log: ${this.searchAllOld}`)
+
             this.getMovies(newVal);
+            this.getSeries(newVal);
         }
+    },
+
+    created() {
+        // Retrieve searchAllOld from Local Storage
+        let searchAllOld = JSON.parse(localStorage.getItem('searchAllOld')) || [];
+        this.searchAllOld = searchAllOld;
     },
 }
 </script>

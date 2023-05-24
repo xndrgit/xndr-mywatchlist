@@ -1,5 +1,5 @@
 <template>
-        <StandardCardComponent :movie="movie"/>
+    <StandardCardComponent :movie="tv"/>
 </template>
 
 <script>
@@ -9,7 +9,7 @@ export default {
     mounted() {
     },
     props: {
-        movie: {
+        tv: {
             type: Object,
             required: true,
         }
