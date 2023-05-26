@@ -1,12 +1,12 @@
 <template>
-    <footer class="bg-dark text-light py-3">
+    <footer class="bg-dark text-light">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <p>&copy; 2023 Netflix Fan Site</p>
+                    <span>&copy; 2023 Netflix Fan Site</span>
                 </div>
                 <div class="col-md-6 text-md-right">
-                    <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+                    <span><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></span>
                 </div>
             </div>
         </div>
@@ -23,5 +23,9 @@ export default {
 
 <style lang="scss" scoped>
 footer {
+    height: 10vh;
+
+    display: flex;
+    align-items: center;
 }
 </style>

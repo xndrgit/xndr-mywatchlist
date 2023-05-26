@@ -1934,20 +1934,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
 var render = function render() {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("header", [_c("nav", {
-    staticClass: "navbar navbar-expand-lg navbar-dark bg-dark"
-  }, [_c("router-link", {
-    staticClass: "navbar-brand",
-    attrs: {
-      to: "/"
-    }
-  }, [_c("img", {
-    attrs: {
-      alt: "Rick & Morty Logo",
-      height: "30",
-      src: _vm.srcLogo
+    var _vm = this,
+        _c = _vm._self._c;
+    return _c("header", {
+        staticClass: "row"
+    }, [_c("nav", {
+        staticClass: "col-12 navbar navbar-expand-lg navbar-dark bg-dark"
+    }, [_c("router-link", {
+        staticClass: "navbar-brand",
+        attrs: {
+            to: "/"
+        }
+    }, [_c("img", {
+        attrs: {
+            alt: "Rick & Morty Logo",
+            height: "30",
+            src: _vm.srcLogo
     }
   })]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "collapse navbar-collapse",
@@ -1957,30 +1959,30 @@ var render = function render() {
   }, [_c("ul", {
     staticClass: "navbar-nav"
   }, [_c("li", {
-    staticClass: "nav-item"
-  }, [_c("router-link", {
-    staticClass: "nav-link",
-    attrs: {
-      to: "/"
-    }
-  }, [_vm._v("Home")])], 1), _vm._v(" "), _c("li", {
-    staticClass: "nav-item"
-  }, [_c("router-link", {
-    staticClass: "nav-link",
-    attrs: {
-      to: "/characters"
-    }
-  }, [_vm._v("Characters")])], 1), _vm._v(" "), _c("li", {
-    staticClass: "nav-item"
-  }, [_c("router-link", {
-    staticClass: "nav-link",
-    attrs: {
-      to: "/episodes"
-    }
-  }, [_vm._v("Episodes")])], 1), _vm._v(" "), _c("li", {
-    staticClass: "nav-item"
-  }, [_c("router-link", {
-    staticClass: "nav-link",
+        staticClass: "nav-item"
+    }, [_c("router-link", {
+        staticClass: "nav-link",
+        attrs: {
+            to: "/movies"
+        }
+    }, [_vm._v("ᴍᴏᴠɪᴇꜱ")])], 1), _vm._v(" "), _c("li", {
+        staticClass: "nav-item"
+    }, [_c("router-link", {
+        staticClass: "nav-link",
+        attrs: {
+            to: "/series"
+        }
+    }, [_vm._v("ꜱᴇʀɪᴇꜱ")])], 1), _vm._v(" "), _c("li", {
+        staticClass: "nav-item"
+    }, [_c("router-link", {
+        staticClass: "nav-link",
+        attrs: {
+            to: "/episodes"
+        }
+    }, [_vm._v("Episodes")])], 1), _vm._v(" "), _c("li", {
+        staticClass: "nav-item"
+    }, [_c("router-link", {
+        staticClass: "nav-link",
     attrs: {
       to: "/locations"
     }
@@ -4780,7 +4782,7 @@ render._withStripped = true;
     for (var i = 0, len = elements.length; i < len; i++) {
       var _ret = _loop(i);
 
-      if (_ret === "continue") ;
+        if (_ret === "continue") ;
     }
 
     return createdDocument.body.innerHTML;
@@ -6421,7 +6423,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "", ""]);
+            exports.push([module.i, "header[data-v-153bfd55] {\n  height: 10vh;\n  display: flex;\n  align-content: center;\n  justify-content: space-between;\n}", ""]);
 
 // exports
 
@@ -38020,8 +38022,8 @@ function addStyle (obj, options) {
 	// If a transform function was defined, run it on the css
 	if (options.transform && obj.css) {
 	    result = typeof options.transform === 'function'
-		 ? options.transform(obj.css)
-		 : options.transform.default(obj.css);
+            ? options.transform(obj.css)
+            : options.transform.default(obj.css);
 
 	    if (result) {
 	    	// If transform returns a value, use that instead of the original css.
@@ -39082,10 +39084,10 @@ function createTextVNode(val) {
 // on their elm reference.
 function cloneVNode(vnode) {
     const cloned = new VNode(vnode.tag, vnode.data,
-    // #7975
-    // clone children array to avoid mutating original in case of cloning
-    // a child.
-    vnode.children && vnode.children.slice(), vnode.text, vnode.elm, vnode.context, vnode.componentOptions, vnode.asyncFactory);
+        // #7975
+        // clone children array to avoid mutating original in case of cloning
+        // a child.
+        vnode.children && vnode.children.slice(), vnode.text, vnode.elm, vnode.context, vnode.componentOptions, vnode.asyncFactory);
     cloned.ns = vnode.ns;
     cloned.isStatic = vnode.isStatic;
     cloned.key = vnode.key;
@@ -40477,17 +40479,16 @@ function bindObjectListeners(data, value) {
     return data;
 }
 
-function resolveScopedSlots(fns, res,
-// the following are added in 2.6
-hasDynamicKeys, contentHashKey) {
-    res = res || { $stable: !hasDynamicKeys };
-    for (let i = 0; i < fns.length; i++) {
-        const slot = fns[i];
-        if (isArray(slot)) {
-            resolveScopedSlots(slot, res, hasDynamicKeys);
-        }
-        else if (slot) {
-            // marker for reverse proxying v-slot without scope on this.$slots
+                function resolveScopedSlots(fns, res,
+                                            // the following are added in 2.6
+                                            hasDynamicKeys, contentHashKey) {
+                    res = res || {$stable: !hasDynamicKeys};
+                    for (let i = 0; i < fns.length; i++) {
+                        const slot = fns[i];
+                        if (isArray(slot)) {
+                            resolveScopedSlots(slot, res, hasDynamicKeys);
+                        } else if (slot) {
+                            // marker for reverse proxying v-slot without scope on this.$slots
             // @ts-expect-error
             if (slot.proxy) {
                 // @ts-expect-error
@@ -42518,13 +42519,13 @@ let uid$1 = 0;
 class Watcher {
     constructor(vm, expOrFn, cb, options, isRenderWatcher) {
         recordEffectScope(this,
-        // if the active effect scope is manually created (not a component scope),
-        // prioritize it
-        activeEffectScope && !activeEffectScope._vm
-            ? activeEffectScope
-            : vm
-                ? vm._scope
-                : undefined);
+            // if the active effect scope is manually created (not a component scope),
+            // prioritize it
+            activeEffectScope && !activeEffectScope._vm
+                ? activeEffectScope
+                : vm
+                    ? vm._scope
+                    : undefined);
         if ((this.vm = vm) && isRenderWatcher) {
             vm._watcher = this;
         }
@@ -43416,10 +43417,10 @@ function createComponent(Ctor, data, context, children, tag) {
     // @ts-expect-error
     const name = getComponentName(Ctor.options) || tag;
     const vnode = new VNode(
-    // @ts-expect-error
-    `vue-component-${Ctor.cid}${name ? `-${name}` : ''}`, data, undefined, undefined, undefined, context,
-    // @ts-expect-error
-    { Ctor, propsData, listeners, tag, children }, asyncFactory);
+        // @ts-expect-error
+        `vue-component-${Ctor.cid}${name ? `-${name}` : ''}`, data, undefined, undefined, undefined, context,
+        // @ts-expect-error
+        {Ctor, propsData, listeners, tag, children}, asyncFactory);
     return vnode;
 }
 function createComponentInstanceForVnode(
@@ -45500,10 +45501,10 @@ function createPatchFunction(backend) {
                 const parentElm = nodeOps.parentNode(oldElm);
                 // create new node
                 createElm(vnode, insertedVnodeQueue,
-                // extremely rare edge case: do not insert if old element is in a
-                // leaving transition. Only happens when combining transition +
-                // keep-alive + HOCs. (#4590)
-                oldElm._leaveCb ? null : parentElm, nodeOps.nextSibling(oldElm));
+                    // extremely rare edge case: do not insert if old element is in a
+                    // leaving transition. Only happens when combining transition +
+                    // keep-alive + HOCs. (#4590)
+                    oldElm._leaveCb ? null : parentElm, nodeOps.nextSibling(oldElm));
                 // update parent placeholder node element, recursively
                 if (isDef(vnode.parent)) {
                     let ancestor = vnode.parent;
@@ -46398,8 +46399,8 @@ function add(name, handler, capture, passive) {
 }
 function remove(name, handler, capture, _target) {
     (_target || target).removeEventListener(name,
-    //@ts-expect-error
-    handler._wrapper || handler, capture);
+        //@ts-expect-error
+        handler._wrapper || handler, capture);
 }
 function updateDOMListeners(oldVnode, vnode) {
     if (isUndef(oldVnode.data.on) && isUndef(vnode.data.on)) {
@@ -50461,7 +50462,6 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
   null,
   "153bfd55",
   null
-
 )
 
 /* hot reload */
@@ -50478,12 +50478,15 @@ component.options.__file = "resources/js/components/HeaderComponent.vue"
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_HeaderComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./HeaderComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HeaderComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_HeaderComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]);
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony import */
+            var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_HeaderComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./HeaderComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HeaderComponent.vue?vue&type=script&lang=js&");
+            /* empty/unused harmony star reexport */ /* harmony default export */
+            __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_HeaderComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]);
 
-/***/ }),
+            /***/
+        }),
 
 /***/ "./resources/js/components/HeaderComponent.vue?vue&type=style&index=0&id=153bfd55&lang=scss&scoped=true&":
 /*!***************************************************************************************************************!*\

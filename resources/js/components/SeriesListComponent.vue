@@ -1,5 +1,5 @@
 <template>
-    <StandardCardComponent :movie="tv"/>
+    <StandardCardComponent :item="tv"/>
 </template>
 
 <script>

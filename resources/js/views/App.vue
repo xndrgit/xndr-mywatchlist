@@ -2,7 +2,8 @@
     <div class="container-lg dark-mode">
 
         <HeaderComponent @searchAll="searchAllFunction"/>
-        <router-view :foundedMoviesGift="foundedMovies" :foundedSeriesGift="foundedSeries"></router-view>
+        <router-view :foundedMoviesGift="foundedMovies" :foundedPersonsGift="foundedPersons"
+                     :foundedSeriesGift="foundedSeries"></router-view>
         <FooterComponent/>
     </div>
 </template>
@@ -31,6 +32,7 @@ export default {
             apiKey: 'da54add692c53fb6bacfc3b15da91484',
             apiUrlMovie: 'https://api.themoviedb.org/3/search/movie',
             apiUrlTv: 'https://api.themoviedb.org/3/search/tv',
+            apiUrlPerson: 'https://api.themoviedb.org/3/search/person',
 
             searchAll: '',
             searchAllOld: [],
@@ -38,6 +40,7 @@ export default {
             // founded datas da passare a chi vuoi
             foundedMovies: [],
             foundedSeries: [],
+            foundedPersons: [],
         }
     },
     methods: {
@@ -52,7 +55,7 @@ export default {
                 .then((result) => {
                     // console.log(result);
                     this.foundedMovies = result.data.results;
-                    console.log(`founded movies: ${this.foundedMovies}`);
+                    console.log(this.foundedMovies);
                 })
                 .catch((error) => {
                     console.warn(error)
@@ -63,12 +66,25 @@ export default {
                 .then((result) => {
                     // console.log(result);
                     this.foundedSeries = result.data.results;
-                    console.log(`founded series: ${this.foundedMovies}`);
+                    console.log(this.foundedSeries);
                 })
                 .catch((error) => {
                     console.warn(error)
                 })
-        }
+        },
+        getPersons(wha) {
+            axios.get(`${this.apiUrlPerson}?api_key=${this.apiKey}&query=${wha}`)
+                .then((result) => {
+                    // console.log(result);
+                    this.foundedPersons = result.data.results;
+                    console.log(this.foundedPersons);
+                })
+                .catch((error) => {
+                    console.warn(error)
+                })
+        },
+
+
     },
     watch: {
         // esegui tutte le volte che cambia il valore di searchMovies, richiami getMovies col newVal
@@ -104,6 +120,7 @@ export default {
 
             this.getMovies(newVal);
             this.getSeries(newVal);
+            this.getPersons(newVal);
         }
     },
 
