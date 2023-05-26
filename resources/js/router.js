@@ -8,6 +8,7 @@ import Contacts from './pages/Contacts.vue';
 import HomePage from "./pages/HomePage.vue";
 import MoviesPage from "./pages/MoviesPage.vue";
 import SeriesPage from "./pages/SeriesPage.vue";
+import PersonsPage from "./pages/PersonsPage.vue";
 
 // per ogni pagina avrò: path (uri) name (by name class), component
 const router = new VueRouter({
@@ -27,6 +28,11 @@ const router = new VueRouter({
             path: '/series',
             name: 'series',
             component: SeriesPage
+        },
+        {
+            path: '/persons',
+            name: 'persons',
+            component: PersonsPage
         },
         {
             path: '/about',

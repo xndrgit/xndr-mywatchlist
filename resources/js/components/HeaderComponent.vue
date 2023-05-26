@@ -19,6 +19,9 @@
                         <router-link class="nav-link" to="/series">ꜱᴇʀɪᴇꜱ</router-link>
                     </li>
                     <li class="nav-item">
+                        <router-link class="nav-link" to="/persons">ᴘᴇʀꜱᴏɴꜱ</router-link>
+                    </li>
+                    <li class="nav-item">
                         <router-link class="nav-link" to="/episodes">Episodes</router-link>
                     </li>
                     <li class="nav-item">
