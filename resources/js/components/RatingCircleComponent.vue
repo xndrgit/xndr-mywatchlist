@@ -1,6 +1,8 @@
 <template>
-    <div class="rating-circle">
-        <span class="rating-vote">{{ vote.toFixed(2) }}</span>
+    <div :class="{'high': vote >= 7, 'mid' : vote > 3 && vote < 7, 'low' : vote < 3 && vote > 0} "
+         class="rating-circle">
+        <span v-if="vote > 0" class="rating-vote">{{ vote.toFixed(2) }}</span>
+        <span v-else class="rating-vote">?</span>
     </div>
 </template>
 
@@ -24,45 +26,38 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 60px;
-    height: 60px;
+
+    width: 40px;
+    height: 40px;
+
     border-radius: 50%;
-    font-size: 24px;
-    font-weight: bold;
-    color: #fff;
+
     text-align: center;
     background-color: #999;
-    font-family: 'Montserrat', sans-serif;
-    cursor: pointer;
+
+    font-family: 'Rubik Puddles', cursive;
+
+
     transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
 }
 
-.rating-circle:hover {
-    transform: scale(1.1);
-    background-color: #666;
-}
-
-.rating-circle:active {
-    transform: scale(0.9);
-    background-color: #333;
-}
-
 .low {
-    background-color: #f44336;
+    background-color: #D3212C;
 }
 
 .mid {
-    background-color: #ff9800;
+    background-color: #FF980E;
 }
 
 .high {
-    background-color: #4caf50;
+    background-color: #069C56;
 }
 
-.rating-text {
+.rating-vote {
     display: block;
-    margin-top: 5px;
-    font-size: 14px;
-    font-weight: normal;
+    font-size: 12px;
+    font-weight: bold;
+    color: black;
+    text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
 }
 </style>
