@@ -116,6 +116,9 @@
                         </svg>
                     </button>
                 </div>
+                <div>
+                    <i class="far fa-star"></i>
+                </div>
                 <p class="card__title text">
                     <!--                    <span class="text&#45;&#45;bold">{{ item.title ? item.title : item.name }}</span>-->
                     <span class="text&#45;&#45;bold">{{ getTitle(item) }}</span>
