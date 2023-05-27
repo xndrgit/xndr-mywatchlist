@@ -13,11 +13,7 @@
                 <!--                    alt="poster"-->
                 <!--                    class="card__image"-->
                 <!--                />-->
-                <img
-                    :src="getImage(item)"
-                    alt="poster"
-                    class="card__image"
-                />
+                <img :src="getImage(item)" alt="poster" class="card__image"/>
             </div>
         </div>
         <div class="card card--rounded wrapper__back">
@@ -116,9 +112,7 @@
                         </svg>
                     </button>
                 </div>
-                <div>
-                    <i class="far fa-star"></i>
-                </div>
+                <RatingCircleComponent :vote="item.vote_average"/>
                 <p class="card__title text">
                     <!--                    <span class="text&#45;&#45;bold">{{ item.title ? item.title : item.name }}</span>-->
                     <span class="text&#45;&#45;bold">{{ getTitle(item) }}</span>
@@ -132,9 +126,7 @@
                     <!--                        }}-->
                     <!--                    </span>-->
                     <span class="text--muted text--size10">
-                        {{
-                            getDate(item)
-                        }}
+                        {{ getDate(item) }}
                     </span>
                     <span class="text--muted">
                         {{ item.original_language }}️‍
@@ -153,8 +145,13 @@
 </template>
 
 <script>
+import RatingCircleComponent from "./RatingCircleComponent.vue";
+
 export default {
     mounted() {
+    },
+    components: {
+        RatingCircleComponent,
     },
     props: {
         item: {
