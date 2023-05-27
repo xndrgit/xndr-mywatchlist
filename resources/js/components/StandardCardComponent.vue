@@ -75,7 +75,7 @@
                                 />
                             </svg>
                         </button>
-                        <button class="p-0 btn btn--transparent btn--circle">
+                        <button v-if="item.vote_average > 0" class="p-0 btn btn--transparent btn--circle">
                             <RatingCircleComponent :vote="item.vote_average"/>
                         </button>
                         <!--                        <button class="btn btn&#45;&#45;transparent btn&#45;&#45;circle">-->
