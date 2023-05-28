@@ -21,12 +21,6 @@
                     <li class="nav-item">
                         <router-link class="nav-link" to="/persons">ᴘᴇʀꜱᴏɴꜱ</router-link>
                     </li>
-                    <li class="nav-item">
-                        <router-link class="nav-link" to="/episodes">Episodes</router-link>
-                    </li>
-                    <li class="nav-item">
-                        <router-link class="nav-link" to="/locations">Locations</router-link>
-                    </li>
                 </ul>
                 <form class="form-inline ml-auto">
                     <input v-model="searchAll" aria-label="Search" class="form-control mr-sm-1" placeholder="Search"

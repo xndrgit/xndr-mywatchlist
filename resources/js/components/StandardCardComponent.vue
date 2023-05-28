@@ -198,6 +198,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 $clr-gray: #141414;
 $clr-red: rgb(229, 9, 20);
 $tablet-width: 768px;
@@ -235,6 +236,7 @@ img {
         font-weight: 700;
         margin-right: 0.3rem;
     }
+
 
     &--muted {
         color: grey;
@@ -281,16 +283,15 @@ img {
     &__front {
         position: relative;
         transition: all 250ms ease-out;
-        transition-delay: 200ms;
+        transition-delay: 300ms;
     }
 
     &__back {
-        display: none;
         position: absolute;
         opacity: 0;
         width: 150%;
         transition: all 250ms ease-out;
-        transition-delay: 200ms;
+        transition-delay: 300ms;
         z-index: 999;
 
         @include desktop {
@@ -308,7 +309,7 @@ img {
             display: inline-block;
             opacity: 1;
             width: 100%;
-            transform: scale(1.1) translateY(-10%);
+            transform: scale(1.05) translateY(-10%);
 
             @include desktop {
                 width: 100%;
