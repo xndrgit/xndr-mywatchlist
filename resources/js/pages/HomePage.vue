@@ -2,14 +2,14 @@
     <div class="container-lg">
         <div class="row">
             <div class="position-relative">
-                <div class="col-12 cards-netflix">
+                <div ref="cardsContainer" class="col-12 cards-netflix">
                     <!--                <h1 class="col-12 text-center">ᴍᴏᴠɪᴇꜱ</h1>-->
                     <MoviesListComponent v-for="movie in foundedMoviesGift" :key="movie.id" :movie="movie"/>
                 </div>
                 <div class="arrows">
-                    <div class="next p-3 bg-white rounded-circle">
+                    <div class="next p-3 bg-white rounded-circle" @click="scrollCards('next')">
                     </div>
-                    <div class="prev p-3 bg-white rounded-circle">
+                    <div class="prev p-3 bg-white rounded-circle" @click="scrollCards('prev')">
                     </div>
                 </div>
             </div>
@@ -55,24 +55,32 @@ export default {
     },
     methods: {
         scrollCards(direction) {
+            // Retrieve a reference to the cards container element using `$refs`
             const cardsContainer = this.$refs.cardsContainer;
-            const cardWidth = cardsContainer.querySelector('.card').offsetWidth;
-            const currentScrollPos = cardsContainer.scrollLeft;
-            let newScrollPos;
 
+            // Calculate the width of a card by querying for the first element with the class "card"
+            const cardWidth = cardsContainer.querySelector('.card').offsetWidth;
+
+            // Retrieve the current scroll position of the cards container element
+            const currentScrollPos = cardsContainer.scrollLeft;
+
+            // Calculate the new scroll position based on the direction passed in as an argument
+            let newScrollPos;
             if (direction === 'next') {
-                newScrollPos = currentScrollPos + cardWidth;
+                newScrollPos = currentScrollPos + (cardWidth * 3);
             } else if (direction === 'prev') {
-                newScrollPos = currentScrollPos - cardWidth;
+                newScrollPos = currentScrollPos - (cardWidth * 3);
             }
 
+            // Scroll the cards container element to the new position with a smooth animation
             cardsContainer.scrollTo({
                 left: newScrollPos,
                 behavior: 'smooth'
             });
-        }
+        },
 
-    }
+
+    },
 }
 </script>
 
