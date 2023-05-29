@@ -52,31 +52,66 @@ export default {
         foundedMoviesGift: Array,
         foundedSeriesGift: Array,
         foundedPersonsGift: Array,
+    },
+    methods: {
+        scrollCards(direction) {
+            const cardsContainer = this.$refs.cardsContainer;
+            const cardWidth = cardsContainer.querySelector('.card').offsetWidth;
+            const currentScrollPos = cardsContainer.scrollLeft;
+            let newScrollPos;
+
+            if (direction === 'next') {
+                newScrollPos = currentScrollPos + cardWidth;
+            } else if (direction === 'prev') {
+                newScrollPos = currentScrollPos - cardWidth;
+            }
+
+            cardsContainer.scrollTo({
+                left: newScrollPos,
+                behavior: 'smooth'
+            });
+        }
+
     }
 }
 </script>
 
 <style lang="scss" scoped>
 
+
 .row {
     min-height: 80vh;
 
     .prev {
+        opacity: 0;
+
         position: absolute;
         left: -40px;
         bottom: 45%;
 
         z-index: 999999999999999999;
 
+        transition: opacity 0.5s ease-in-out; /* Add transition */
+
     }
 
     .next {
+        opacity: 0;
+
         position: absolute;
         right: -40px;
         bottom: 45%;
 
         z-index: 999999999999999999;
+
+        transition: opacity 0.2s ease-in-out; /* Add transition */
     }
+
+
+    .position-relative:hover .prev, .position-relative:hover .next {
+        opacity: 1; /* Change opacity on hover of .cards-netflix */
+    }
+
 
     .cards-netflix {
 
@@ -97,6 +132,9 @@ export default {
     .cards-netflix::-webkit-scrollbar {
         display: none; /* hide scrollbar for Chrome, Safari, and Edge */
     }
+
+
 }
+
 
 </style>

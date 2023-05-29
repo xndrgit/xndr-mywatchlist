@@ -291,7 +291,7 @@ img {
         opacity: 0;
         width: 150%;
         transition: all 250ms ease-out;
-        transition-delay: 300ms;
+        transition-delay: 100ms;
         z-index: 999;
 
         @include desktop {
@@ -309,7 +309,7 @@ img {
             display: inline-block;
             opacity: 1;
             width: 100%;
-            transform: scale(1.05) translateY(-10%);
+            transform: scale(1.1) translateY(-10%);
 
             @include desktop {
                 width: 100%;
