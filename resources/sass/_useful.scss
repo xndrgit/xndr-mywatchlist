@@ -1,3 +1,48 @@
 .text-cloud {
     font-family: 'Rubik Puddles', cursive;
 }
+
+
+//ARROW
+
+$arrow-size: 50px;
+$arrow-thickness: 10px;
+$arrow-color: #000;
+
+.arrows {
+    cursor: pointer;
+
+    .prev::before,
+    .next::before {
+        content: "";
+        width: $arrow-size;
+        height: $arrow-size;
+        display: block;
+    }
+
+    .prev::before {
+        border-left: $arrow-thickness solid $arrow-color;
+        border-bottom: $arrow-thickness solid $arrow-color;
+        transform: translateX(10px) rotate(45deg);
+    }
+
+    .next::before {
+        border-right: $arrow-thickness solid $arrow-color;
+        border-top: $arrow-thickness solid $arrow-color;
+        transform: translateX(-10px) rotate(45deg);
+    }
+
+    .prev::before,
+    .next::before {
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .prev:hover::before {
+        transform: translateX(2px) rotate(45deg);
+    }
+
+    .next:hover::before {
+        transform: translateX(-2px) rotate(45deg);
+    }
+
+}

@@ -7790,6 +7790,43 @@ readers do not read off random characters that represent icons */
   font-family: "Rubik Puddles", cursive;
 }
 
+.arrows {
+  cursor: pointer;
+}
+
+.arrows .prev::before,
+.arrows .next::before {
+  content: "";
+  width: 50px;
+  height: 50px;
+  display: block;
+}
+
+.arrows .prev::before {
+  border-left: 10px solid #000;
+  border-bottom: 10px solid #000;
+  transform: translateX(10px) rotate(45deg);
+}
+
+.arrows .next::before {
+  border-right: 10px solid #000;
+  border-top: 10px solid #000;
+  transform: translateX(-10px) rotate(45deg);
+}
+
+.arrows .prev::before,
+.arrows .next::before {
+  transition: transform 0.2s ease-in-out;
+}
+
+.arrows .prev:hover::before {
+  transform: translateX(2px) rotate(45deg);
+}
+
+.arrows .next:hover::before {
+  transform: translateX(-2px) rotate(45deg);
+}
+
 /*!
  * Bootstrap v4.6.2 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors

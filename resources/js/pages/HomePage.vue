@@ -1,19 +1,31 @@
 <template>
     <div class="container-lg">
         <div class="row">
-            <div class="col-12 cards-netflix">
-                <!--                <h1 class="col-12 text-center">ᴍᴏᴠɪᴇꜱ</h1>-->
-                <MoviesListComponent v-for="movie in foundedMoviesGift" :key="movie.id" :movie="movie"/>
+            <div class="position-relative">
+                <div class="col-12 cards-netflix">
+                    <!--                <h1 class="col-12 text-center">ᴍᴏᴠɪᴇꜱ</h1>-->
+                    <MoviesListComponent v-for="movie in foundedMoviesGift" :key="movie.id" :movie="movie"/>
+                </div>
+                <div class="arrows">
+                    <div class="next p-3 bg-white rounded-circle">
+                    </div>
+                    <div class="prev p-3 bg-white rounded-circle">
+                    </div>
+                </div>
             </div>
 
-            <div class="col-12 cards-netflix">
-                <!--                <h1 class=" col-12 text-center">ꜱᴇʀɪᴇꜱ</h1>-->
-                <SeriesListComponent v-for="tv in foundedSeriesGift" :key="tv.id" :tv="tv"/>
+            <div class="position-relative">
+                <div class="col-12 cards-netflix">
+                    <!--                <h1 class=" col-12 text-center">ꜱᴇʀɪᴇꜱ</h1>-->
+                    <SeriesListComponent v-for="tv in foundedSeriesGift" :key="tv.id" :tv="tv"/>
+                </div>
             </div>
 
-            <div class="col-12 cards-netflix">
+            <div class="position-relative">
+                <div class="col-12 cards-netflix">
 
-                <PersonsListComponent v-for="person in foundedPersonsGift" :key="person.id" :person="person"/>
+                    <PersonsListComponent v-for="person in foundedPersonsGift" :key="person.id" :person="person"/>
+                </div>
             </div>
 
 
@@ -49,7 +61,25 @@ export default {
 .row {
     min-height: 80vh;
 
+    .prev {
+        position: absolute;
+        left: -40px;
+        bottom: 45%;
+
+        z-index: 999999999999999999;
+
+    }
+
+    .next {
+        position: absolute;
+        right: -40px;
+        bottom: 45%;
+
+        z-index: 999999999999999999;
+    }
+
     .cards-netflix {
+
         min-height: 680px;
 
         display: flex;
