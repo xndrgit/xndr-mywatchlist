@@ -1,30 +1,44 @@
 <template>
     <div class="container-lg">
         <div class="row">
+<!--            The position-relative class is used to set the positioning context for the movies list and arrow buttons.-->
             <div class="position-relative">
-                <div ref="cardsContainer" class="col-12 cards-netflix">
+                <!--                The ref attribute is used to create a reference to the cardsContainerMovie element, which is used by -->
+                <!--                the scrollCardsMovie method to scroll the movies list container.-->
+                <div ref="cardsContainerMovie" class="col-12 cards-netflix">
                     <!--                <h1 class="col-12 text-center">ᴍᴏᴠɪᴇꜱ</h1>-->
                     <MoviesListComponent v-for="movie in foundedMoviesGift" :key="movie.id" :movie="movie"/>
                 </div>
                 <div class="arrows">
-                    <div class="next p-3 bg-white rounded-circle" @click="scrollCards('next')">
+                    <div class="next p-3 bg-white rounded-circle" @click="scrollCardsMovie('next')">
                     </div>
-                    <div class="prev p-3 bg-white rounded-circle" @click="scrollCards('prev')">
+                    <div class="prev p-3 bg-white rounded-circle" @click="scrollCardsMovie('prev')">
                     </div>
                 </div>
             </div>
 
             <div class="position-relative">
-                <div class="col-12 cards-netflix">
+                <div ref="cardsContainerTv" class="col-12 cards-netflix">
                     <!--                <h1 class=" col-12 text-center">ꜱᴇʀɪᴇꜱ</h1>-->
                     <SeriesListComponent v-for="tv in foundedSeriesGift" :key="tv.id" :tv="tv"/>
                 </div>
+                <div class="arrows">
+                    <div class="next p-3 bg-white rounded-circle" @click="scrollCardsTv('next')">
+                    </div>
+                    <div class="prev p-3 bg-white rounded-circle" @click="scrollCardsTv('prev')">
+                    </div>
+                </div>
             </div>
 
             <div class="position-relative">
                 <div class="col-12 cards-netflix">
-
                     <PersonsListComponent v-for="person in foundedPersonsGift" :key="person.id" :person="person"/>
+                </div>
+                <div class="arrows">
+                    <div class="next p-3 bg-white rounded-circle">
+                    </div>
+                    <div class="prev p-3 bg-white rounded-circle">
+                    </div>
                 </div>
             </div>
 
@@ -54,15 +68,15 @@ export default {
         foundedPersonsGift: Array,
     },
     methods: {
-        scrollCards(direction) {
+        scrollCardsMovie(direction) {
             // Retrieve a reference to the cards container element using `$refs`
-            const cardsContainer = this.$refs.cardsContainer;
+            const cardsContainerMovie = this.$refs.cardsContainerMovie;
 
             // Calculate the width of a card by querying for the first element with the class "card"
-            const cardWidth = cardsContainer.querySelector('.card').offsetWidth;
+            const cardWidth = cardsContainerMovie.querySelector('.card').offsetWidth;
 
             // Retrieve the current scroll position of the cards container element
-            const currentScrollPos = cardsContainer.scrollLeft;
+            const currentScrollPos = cardsContainerMovie.scrollLeft;
 
             // Calculate the new scroll position based on the direction passed in as an argument
             let newScrollPos;
@@ -73,7 +87,31 @@ export default {
             }
 
             // Scroll the cards container element to the new position with a smooth animation
-            cardsContainer.scrollTo({
+            cardsContainerMovie.scrollTo({
+                left: newScrollPos,
+                behavior: 'smooth'
+            });
+        },
+        scrollCardsTv(direction) {
+            // Retrieve a reference to the cards container element using `$refs`
+            const cardsContainerTv = this.$refs.cardsContainerTv;
+
+            // Calculate the width of a card by querying for the first element with the class "card"
+            const cardWidth = cardsContainerTv.querySelector('.card').offsetWidth;
+
+            // Retrieve the current scroll position of the cards container element
+            const currentScrollPos = cardsContainerTv.scrollLeft;
+
+            // Calculate the new scroll position based on the direction passed in as an argument
+            let newScrollPos;
+            if (direction === 'next') {
+                newScrollPos = currentScrollPos + (cardWidth * 3);
+            } else if (direction === 'prev') {
+                newScrollPos = currentScrollPos - (cardWidth * 3);
+            }
+
+            // Scroll the cards container element to the new position with a smooth animation
+            cardsContainerTv.scrollTo({
                 left: newScrollPos,
                 behavior: 'smooth'
             });
