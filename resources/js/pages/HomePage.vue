@@ -1,11 +1,15 @@
 <template>
     <div class="container-lg">
-        <div class="row">
-<!--            The position-relative class is used to set the positioning context for the movies list and arrow buttons.-->
+        <div class="row flex-column">
+            <!--            The position-relative class is used to set the positioning context for the movies list and arrow buttons.-->
             <div class="position-relative">
+                <img v-if="foundedMoviesGift.length > 0" :src="imagePath('movies.png')" alt="Movies Image"
+                     class="img-fluid title-list">
+
                 <!--                The ref attribute is used to create a reference to the cardsContainerMovie element, which is used by -->
                 <!--                the scrollCardsMovie method to scroll the movies list container.-->
                 <div ref="cardsContainerMovie" class="col-12 cards-netflix">
+
                     <!--                <h1 class="col-12 text-center">ᴍᴏᴠɪᴇꜱ</h1>-->
                     <MoviesListComponent v-for="movie in foundedMoviesGift" :key="movie.id" :movie="movie"/>
                 </div>
@@ -18,6 +22,8 @@
             </div>
 
             <div class="position-relative">
+                <img v-if="foundedSeriesGift.length > 0" :src="imagePath('tvshows.png')" alt="Tv Shows Image"
+                     class="img-fluid title-list">
                 <div ref="cardsContainerTv" class="col-12 cards-netflix">
                     <!--                <h1 class=" col-12 text-center">ꜱᴇʀɪᴇꜱ</h1>-->
                     <SeriesListComponent v-for="tv in foundedSeriesGift" :key="tv.id" :tv="tv"/>
@@ -31,8 +37,11 @@
             </div>
 
             <div class="position-relative">
+                <img v-if="foundedPersonsGift.length > 0" :src="imagePath('persons.png')" alt="Persons Image"
+                     class="img-fluid title-list">
                 <div class="col-12 cards-netflix">
-                    <PersonsListComponent v-for="person in foundedPersonsGift" :key="person.id" :person="person"/>
+                    <PersonsListComponent v-for="person in foundedPersonsGift" v-if="person" :key="person.id"
+                                          :person="person"/>
                 </div>
                 <div class="arrows">
                     <div class="next p-3 bg-white rounded-circle">
@@ -68,6 +77,10 @@ export default {
         foundedPersonsGift: Array,
     },
     methods: {
+        imagePath(filename) {
+            return require(`../../../public/images/${filename}`);
+        },
+
         scrollCardsMovie(direction) {
             // Retrieve a reference to the cards container element using `$refs`
             const cardsContainerMovie = this.$refs.cardsContainerMovie;
@@ -128,6 +141,15 @@ export default {
 .row {
     min-height: 80vh;
 
+    .title-list {
+        position: absolute;
+        top: 0;
+        width: 40%;
+
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
     .prev {
         opacity: 0;
 
@@ -173,6 +195,8 @@ export default {
         //The white-space: nowrap property is used to prevent the cards from wrapping to the next line, which is necessary to keep them in a single row. If the cards were allowed to wrap, the horizontal scrolling would not work as expected.
         white-space: nowrap;
         flex-wrap: nowrap;
+
+
     }
 
     .cards-netflix::-webkit-scrollbar {

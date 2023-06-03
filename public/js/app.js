@@ -2012,9 +2012,9 @@ var render = function render() {
             click: function click($event) {
                 $event.preventDefault();
                 return _vm.$emit("searchAll", _vm.searchAll);
-      }
-    }
-  }, [_vm._v("Search\n                ")])])])], 1)]);
+            }
+        }
+    }, [_vm._v("Search\n                ")])])])], 1)]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -50537,12 +50537,13 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
             /***/
         }),
 
-/***/ "./resources/sass/app.scss":
-/*!*********************************!*\
-  !*** ./resources/sass/app.scss ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+        /***/
+        "./resources/sass/app.scss":
+        /*!*********************************!*\
+          !*** ./resources/sass/app.scss ***!
+          \*********************************/
+        /*! no static exports found */
+        /***/ (function (module, exports) {
 
 // removed by extract-text-webpack-plugin
 
