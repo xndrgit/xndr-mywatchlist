@@ -1909,16 +1909,21 @@ module.exports = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      srcLogo: 'https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png',
-      searchAll: ''
-    };
-  },
-  mounted: function mounted() {
-    console.log('HeaderComponent mounted.');
-  }
-});
+                data: function data() {
+                    return {
+                        // srcLogo: 'https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png',
+                        searchAll: ''
+                    };
+                },
+                methods: {
+                    imagePath: function imagePath(filename) {
+                        return __webpack_require__("./public/images sync recursive ^\\.\\/.*$")("./".concat(filename));
+                    }
+                },
+                mounted: function mounted() {
+                    console.log('HeaderComponent mounted.');
+                }
+            });
 
 /***/ }),
 
@@ -1941,15 +1946,15 @@ var render = function render() {
     }, [_c("nav", {
         staticClass: "col-12 navbar navbar-expand-lg navbar-dark bg-dark"
     }, [_c("router-link", {
-        staticClass: "navbar-brand",
+        staticClass: "navbar-brand col-lg-3",
         attrs: {
             to: "/"
         }
     }, [_c("img", {
+        staticClass: "img-fluid",
         attrs: {
             alt: "Rick & Morty Logo",
-            height: "30",
-            src: _vm.srcLogo
+            src: _vm.imagePath("mylist.png")
         }
     })]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("div", {
         staticClass: "collapse navbar-collapse",
@@ -1957,7 +1962,7 @@ var render = function render() {
             id: "navbarNav"
         }
     }, [_c("ul", {
-        staticClass: "navbar-nav"
+        staticClass: "navbar-nav col-lg-"
     }, [_c("li", {
         staticClass: "nav-item"
     }, [_c("router-link", {
@@ -1965,21 +1970,21 @@ var render = function render() {
         attrs: {
             to: "/movies"
         }
-    }, [_vm._v("ᴍᴏᴠɪᴇꜱ")])], 1), _vm._v(" "), _c("li", {
+    }, [_vm._v("мσνιєѕ")])], 1), _vm._v(" "), _c("li", {
         staticClass: "nav-item"
     }, [_c("router-link", {
         staticClass: "nav-link",
         attrs: {
             to: "/series"
         }
-    }, [_vm._v("ꜱᴇʀɪᴇꜱ")])], 1), _vm._v(" "), _c("li", {
+    }, [_vm._v("ѕєяιєѕ")])], 1), _vm._v(" "), _c("li", {
         staticClass: "nav-item"
     }, [_c("router-link", {
         staticClass: "nav-link",
         attrs: {
             to: "/persons"
         }
-    }, [_vm._v("ᴘᴇʀꜱᴏɴꜱ")])], 1)]), _vm._v(" "), _c("form", {
+    }, [_vm._v("ρєяѕσиѕ")])], 1)]), _vm._v(" "), _c("form", {
         staticClass: "form-inline ml-auto"
     }, [_c("input", {
         directives: [{
@@ -2014,7 +2019,7 @@ var render = function render() {
                 return _vm.$emit("searchAll", _vm.searchAll);
             }
         }
-    }, [_vm._v("Search\n                ")])])])], 1)]);
+    }, [_vm._v("Search\n                    ")])])])], 1)]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -50326,25 +50331,119 @@ module.exports = function(module) {
 			enumerable: true,
 			get: function() {
 				return module.i;
-			}
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
+            }
+        });
+        module.webpackPolyfill = 1;
+    }
+    return module;
 };
 
 
-/***/ }),
+            /***/
+        }),
 
-/***/ "./resources/js/app.js":
-/*!*****************************!*\
-  !*** ./resources/js/app.js ***!
-  \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+        /***/
+        "./public/images sync recursive ^\\.\\/.*$":
+        /*!*************************************!*\
+          !*** ./public/images sync ^\.\/.*$ ***!
+          \*************************************/
+        /*! no static exports found */
+        /***/ (function (module, exports, __webpack_require__) {
 
-/**
- * First we will load all of this project's JavaScript dependencies which
+            var map = {
+                "./movies.png": "./public/images/movies.png",
+                "./mylist.png": "./public/images/mylist.png",
+                "./persons.png": "./public/images/persons.png",
+                "./tvshows.png": "./public/images/tvshows.png"
+            };
+
+
+            function webpackContext(req) {
+                var id = webpackContextResolve(req);
+                return __webpack_require__(id);
+            }
+
+            function webpackContextResolve(req) {
+                if (!__webpack_require__.o(map, req)) {
+                    var e = new Error("Cannot find module '" + req + "'");
+                    e.code = 'MODULE_NOT_FOUND';
+                    throw e;
+                }
+                return map[req];
+            }
+
+            webpackContext.keys = function webpackContextKeys() {
+                return Object.keys(map);
+            };
+            webpackContext.resolve = webpackContextResolve;
+            module.exports = webpackContext;
+            webpackContext.id = "./public/images sync recursive ^\\.\\/.*$";
+
+            /***/
+        }),
+
+        /***/
+        "./public/images/movies.png":
+        /*!**********************************!*\
+          !*** ./public/images/movies.png ***!
+          \**********************************/
+        /*! no static exports found */
+        /***/ (function (module, exports) {
+
+            module.exports = "/images/movies.png?f0f5391b63ca4990ec2f4fc610cafeb5";
+
+            /***/
+        }),
+
+        /***/
+        "./public/images/mylist.png":
+        /*!**********************************!*\
+          !*** ./public/images/mylist.png ***!
+          \**********************************/
+        /*! no static exports found */
+        /***/ (function (module, exports) {
+
+            module.exports = "/images/mylist.png?af410a7ce6a4a79ca4bcb9b02f8f3fe0";
+
+            /***/
+        }),
+
+        /***/
+        "./public/images/persons.png":
+        /*!***********************************!*\
+          !*** ./public/images/persons.png ***!
+          \***********************************/
+        /*! no static exports found */
+        /***/ (function (module, exports) {
+
+            module.exports = "/images/persons.png?c11a28c00647ce62c5f54de09de1b617";
+
+            /***/
+        }),
+
+        /***/
+        "./public/images/tvshows.png":
+        /*!***********************************!*\
+          !*** ./public/images/tvshows.png ***!
+          \***********************************/
+        /*! no static exports found */
+        /***/ (function (module, exports) {
+
+            module.exports = "/images/tvshows.png?61d27878913def40fe6d9cbef9589597";
+
+            /***/
+        }),
+
+        /***/
+        "./resources/js/app.js":
+        /*!*****************************!*\
+          !*** ./resources/js/app.js ***!
+          \*****************************/
+        /*! no static exports found */
+        /***/ (function (module, exports, __webpack_require__) {
+
+            /**
+             * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */

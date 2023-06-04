@@ -39,14 +39,14 @@
             <div class="position-relative">
                 <img v-if="foundedPersonsGift.length > 0" :src="imagePath('persons.png')" alt="Persons Image"
                      class="img-fluid title-list">
-                <div class="col-12 cards-netflix">
+                <div ref="cardsContainerPerson" class="col-12 cards-netflix">
                     <PersonsListComponent v-for="person in foundedPersonsGift" v-if="person" :key="person.id"
                                           :person="person"/>
                 </div>
                 <div class="arrows">
-                    <div class="next p-3 bg-white rounded-circle">
+                    <div class="next p-3 bg-white rounded-circle" @click="scrollCardsPersons('next')">
                     </div>
-                    <div class="prev p-3 bg-white rounded-circle">
+                    <div class="prev p-3 bg-white rounded-circle" @click="scrollCardsPersons('prev')">
                     </div>
                 </div>
             </div>
@@ -129,8 +129,21 @@ export default {
                 behavior: 'smooth'
             });
         },
+        scrollCardsPersons(direction) {
+            const currentPosition = this.$refs.cardsContainerPerson.scrollLeft;
+            const cardWidth = this.$refs.card[0].offsetWidth;
+            let newPosition;
+            if (direction === 'next') {
+                newPosition = currentPosition + (cardWidth * 3);
+            } else if (direction === 'prev') {
+                newPosition = currentPosition - (cardWidth * 3);
+            }
 
-
+            this.$refs.cardsContainerPerson.scrollTo({
+                left: newPosition,
+                behavior: "smooth"
+            });
+        },
     },
 }
 </script>
