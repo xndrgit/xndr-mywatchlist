@@ -12,7 +12,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div id="navbarNav" class="collapse navbar-collapse">
-                <ul class="navbar-nav col-lg-">
+                <ul class="navbar-nav col-lg-4">
                     <li class="nav-item">
                         <router-link class="nav-link" to="/movies">мσνιєѕ</router-link>
                     </li>
@@ -23,6 +23,13 @@
                         <router-link class="nav-link" to="/persons">ρєяѕσиѕ</router-link>
                     </li>
                 </ul>
+
+                <div class="select col-lg-3">
+                    <select id="format" name="format">
+                        <option disabled selected>my hystory</option>
+                        <option v-for="log in searchAllOldGift.slice().reverse()" :value="log">{{ log }}</option>
+                    </select>
+                </div>
                 <form class="form-inline ml-auto">
                     <input v-model="searchAll" aria-label="Search" class="form-control mr-sm-1" placeholder="Search"
                            type="search">
@@ -38,6 +45,9 @@
 
 <script>
 export default {
+    props: {
+        searchAllOldGift: Array,
+    },
     data: function () {
         return {
             // srcLogo: 'https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png',
@@ -63,5 +73,58 @@ header {
     display: flex;
     align-content: center;
     justify-content: space-between;
+
+
+    select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -ms-appearance: none;
+        appearance: none;
+
+        outline: 0;
+        box-shadow: none;
+        border: 0 !important;
+        background: #5c6664;
+        background-image: none;
+
+        flex: 1;
+        padding: 0 .5em;
+
+        color: #fff;
+        cursor: pointer;
+        font-size: 1em;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    select::-ms-expand {
+        display: none;
+    }
+
+    .select {
+        position: relative;
+        display: flex;
+        width: 10em;
+        height: 3em;
+        line-height: 3;
+        background: #5c6664;
+        overflow: hidden;
+        border-radius: .25em;
+    }
+
+    .select::after {
+        content: '\25BC';
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 0 1em;
+        background: #2b2e2e;
+        cursor: pointer;
+        pointer-events: none;
+        transition: .25s all ease;
+    }
+
+    .select:hover::after {
+        color: #23b499;
+    }
 }
 </style>

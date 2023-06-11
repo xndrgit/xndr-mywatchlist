@@ -1,9 +1,12 @@
 <template>
     <div class="container-lg dark-mode">
 
-        <HeaderComponent @searchAll="searchAllFunction"/>
+        <HeaderComponent :searchAllOldGift="searchAllOld" @searchAll="searchAllFunction"/>
         <router-view :foundedMoviesGift="foundedMovies" :foundedPersonsGift="foundedPersons"
-                     :foundedSeriesGift="foundedSeries"></router-view>
+                     :foundedSeriesGift="foundedSeries"
+        >
+
+        </router-view>
         <FooterComponent/>
     </div>
 </template>
