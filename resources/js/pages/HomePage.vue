@@ -2,7 +2,7 @@
     <div class="container-lg">
         <div class="row flex-column">
             <!--            The position-relative class is used to set the positioning context for the movies list and arrow buttons.-->
-            <div class="position-relative">
+            <div v-if="foundedMoviesGift.length > 0" class="position-relative">
                 <img v-if="foundedMoviesGift.length > 0" :src="imagePath('movies.png')" alt="Movies Image"
                      class="img-fluid title-list">
 
@@ -21,7 +21,7 @@
                 </div>
             </div>
 
-            <div class="position-relative">
+            <div v-if="foundedSeriesGift.length > 0" class="position-relative">
                 <img v-if="foundedSeriesGift.length > 0" :src="imagePath('tvshows.png')" alt="Tv Shows Image"
                      class="img-fluid title-list">
                 <div ref="cardsContainerTv" class="col-12 cards-netflix">
@@ -36,7 +36,7 @@
                 </div>
             </div>
 
-            <div class="position-relative">
+            <div v-if="foundedPersonsGift.length > 0" class="position-relative">
                 <img v-if="foundedPersonsGift.length > 0" :src="imagePath('persons.png')" alt="Persons Image"
                      class="img-fluid title-list">
                 <div ref="cardsContainerPerson" class="col-12 cards-netflix">

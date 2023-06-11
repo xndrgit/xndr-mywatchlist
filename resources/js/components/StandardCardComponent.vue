@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper col-3">
-        <div class="card card--rounded wrapper__front">
+        <div ref="card" class="card card--rounded wrapper__front">
             <div class="card__header">
                 <!--                <img-->
                 <!--                    :src="-->
@@ -300,7 +300,7 @@ img {
         }
     }
 
-    &:hover {
+    &:active {
         .wrapper__front {
             opacity: 0;
         }
@@ -389,7 +389,7 @@ img {
         border-radius: 50%;
     }
 
-    &:hover {
+    &:active {
         background: white;
 
         .card__icon {

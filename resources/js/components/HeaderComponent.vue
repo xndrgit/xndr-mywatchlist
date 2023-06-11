@@ -1,9 +1,10 @@
 <template>
     <header class="row">
         <nav class="col-12 navbar navbar-expand-lg navbar-dark bg-dark">
-            <router-link class="navbar-brand" to="/">
+            <router-link class="navbar-brand col-lg-3" to="/">
                 <img alt="Rick & Morty Logo"
-                     height="30" :src="srcLogo">
+                     :src="imagePath('mylist.png')" class="img-fluid">
+                <!--                     height="30" :src="srcLogo">-->
             </router-link>
             <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
                     class="navbar-toggler"
@@ -11,15 +12,15 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div id="navbarNav" class="collapse navbar-collapse">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav col-lg-">
                     <li class="nav-item">
-                        <router-link class="nav-link" to="/movies">ᴍᴏᴠɪᴇꜱ</router-link>
+                        <router-link class="nav-link" to="/movies">мσνιєѕ</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-link" to="/series">ꜱᴇʀɪᴇꜱ</router-link>
+                        <router-link class="nav-link" to="/series">ѕєяιєѕ</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-link" to="/persons">ᴘᴇʀꜱᴏɴꜱ</router-link>
+                        <router-link class="nav-link" to="/persons">ρєяѕσиѕ</router-link>
                     </li>
                 </ul>
                 <form class="form-inline ml-auto">
@@ -37,11 +38,16 @@
 
 <script>
 export default {
-    data: function (){
+    data: function () {
         return {
-            srcLogo: 'https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png',
+            // srcLogo: 'https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png',
             searchAll: '',
         }
+    },
+    methods: {
+        imagePath(filename) {
+            return require(`../../../public/images/${filename}`);
+        },
     },
     mounted() {
         console.log('HeaderComponent mounted.')
