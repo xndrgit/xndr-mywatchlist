@@ -1,9 +1,9 @@
 <template>
     <div class="container-lg dark-mode">
 
-        <HeaderComponent :searchAllOldGift="searchAllOld" @searchAll="searchAllFunction"/>
+        <HeaderComponent :searchAllOldGift="searchAllOld" @searchAll="searchAllFunction" @update-data="updateData"/>
         <router-view :foundedMoviesGift="foundedMovies" :foundedPersonsGift="foundedPersons"
-                     :foundedSeriesGift="foundedSeries"
+                     :foundedSeriesGift="foundedSeries" :foundedTrendingMoviesGift="foundedTrendingMovies"
         >
 
         </router-view>
@@ -37,6 +37,10 @@ export default {
             apiUrlTv: 'https://api.themoviedb.org/3/search/tv',
             apiUrlPerson: 'https://api.themoviedb.org/3/search/person',
 
+            apiUrlTrendingMovie: 'https://api.themoviedb.org/3/trending/movie/day',
+            apiUrlTrendingTv: 'https://api.themoviedb.org/3/trending/tv/day',
+            apiUrlTrendingPerson: 'https://api.themoviedb.org/3/trending/person/day',
+
             searchAll: '',
             searchAllOld: [],
 
@@ -44,6 +48,10 @@ export default {
             foundedMovies: [],
             foundedSeries: [],
             foundedPersons: [],
+
+            foundedTrendingMovies: [],
+            foundedTrendingSeries: [],
+            foundedTrendingPersons: [],
         }
     },
     methods: {
@@ -52,6 +60,12 @@ export default {
         searchAllFunction(result) {
             console.log(`App.vue is saying:  ${result}`);
             this.searchAll = result;
+        },
+        updateData(data) {
+            this.foundedMovies = data.foundedMovies;
+            this.foundedSeries = data.foundedSeries;
+            this.foundedPersons = data.foundedPersons;
+            console.log(`App.vue founded data edited`)
         },
         getMovies(wha) {
             axios.get(`${this.apiUrlMovie}?api_key=${this.apiKey}&query=${wha}`)
@@ -81,6 +95,18 @@ export default {
                     // console.log(result);
                     this.foundedPersons = result.data.results;
                     console.log(this.foundedPersons);
+                })
+                .catch((error) => {
+                    console.warn(error)
+                })
+        },
+
+        getTrendingMovies(wha) {
+            axios.get(`${this.apiUrlTrendingMovie}?api_key=${this.apiKey}`)
+                .then((result) => {
+                    // console.log(result);
+                    this.foundedTrendingMovies = result.data.results;
+                    console.log(this.foundedTrendingMovies);
                 })
                 .catch((error) => {
                     console.warn(error)
@@ -124,10 +150,11 @@ export default {
             this.getMovies(newVal);
             this.getSeries(newVal);
             this.getPersons(newVal);
-        }
-    },
 
+        },
+    },
     created() {
+        this.getTrendingMovies();
         // Retrieve searchAllOld from Local Storage
         let searchAllOld = JSON.parse(localStorage.getItem('searchAllOld')) || [];
         this.searchAllOld = searchAllOld;
@@ -139,19 +166,19 @@ export default {
 <style lang="scss">
 // Default styles for light mode
 body {
-    background-color: #343a40;
+    background-color: black;
     color: #fff;
 }
 
 // Styles for dark mode
 body.dark-mode {
-    background-color: #343a40;
-    color: #fff;
+    background-color: black;
+    color: white;
 }
 
 // Additional styles for dark mode
 body.dark-mode h1 {
-    color: #fff;
+    color: white;
 }
 
 body.dark-mode a {

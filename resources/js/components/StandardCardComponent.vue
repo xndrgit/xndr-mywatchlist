@@ -300,7 +300,7 @@ img {
         }
     }
 
-    &:active {
+    &:hover {
         .wrapper__front {
             opacity: 0;
         }
@@ -389,7 +389,7 @@ img {
         border-radius: 50%;
     }
 
-    &:active {
+    &:hover {
         background: white;
 
         .card__icon {

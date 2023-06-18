@@ -1,10 +1,11 @@
 <template>
     <header class="row">
-        <nav class="col-12 navbar navbar-expand-lg navbar-dark bg-dark">
-            <router-link class="navbar-brand col-lg-3" to="/">
-                <img alt="Rick & Morty Logo"
-                     :src="imagePath('mylist.png')" class="img-fluid">
-                <!--                     height="30" :src="srcLogo">-->
+        <nav class="col-12 navbar navbar-expand-lg navbar-dark">
+            <router-link class="navbar-brand col-lg-3 d-flex justify-content-center" to="/">
+                <!--                <img alt="Rick & Morty Logo"-->
+                <!--                     :src="imagePath('mylist.png')" class="img-fluid">-->
+                <!--                &lt;!&ndash;                     height="30" :src="srcLogo">&ndash;&gt;-->
+                <h1 class="font-weight-bold">MyWatchList</h1>
             </router-link>
             <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
                     class="navbar-toggler"
@@ -25,7 +26,7 @@
                 </ul>
 
                 <div class="select col-lg-3">
-                    <select id="format" name="format">
+                    <select id="format" v-model="selectedOption" name="format">
                         <option disabled selected>my hystory</option>
                         <option v-for="log in searchAllOldGift.slice().reverse()" :value="log">{{ log }}</option>
                     </select>
@@ -44,30 +45,90 @@
 </template>
 
 <script>
+
+import axios from "axios";
+
 export default {
     props: {
         searchAllOldGift: Array,
     },
     data: function () {
         return {
+            // https://developers.themoviedb.org/3/search/search-movies
+            apiKey: 'da54add692c53fb6bacfc3b15da91484',
+            apiUrlMovie: 'https://api.themoviedb.org/3/search/movie',
+            apiUrlTv: 'https://api.themoviedb.org/3/search/tv',
+            apiUrlPerson: 'https://api.themoviedb.org/3/search/person',
+
+
             // srcLogo: 'https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png',
             searchAll: '',
+            selectedOption: null,
+
+
+            // founded datas da passare a chi vuoi
+            foundedMovies: [],
+            foundedSeries: [],
+            foundedPersons: [],
+
+
         }
     },
     methods: {
         imagePath(filename) {
             return require(`../../../public/images/${filename}`);
         },
+        getMovies(wha) {
+            axios.get(`${this.apiUrlMovie}?api_key=${this.apiKey}&query=${wha}`)
+                .then((result) => {
+                    // console.log(result);
+                    this.foundedMovies = result.data.results;
+                    console.log(this.foundedMovies);
+                })
+                .catch((error) => {
+                    console.warn(error)
+                })
+        },
+        getSeries(wha) {
+            axios.get(`${this.apiUrlTv}?api_key=${this.apiKey}&query=${wha}`)
+                .then((result) => {
+                    // console.log(result);
+                    this.foundedSeries = result.data.results;
+                    console.log(this.foundedSeries);
+                })
+                .catch((error) => {
+                    console.warn(error)
+                })
+        },
+        getPersons(wha) {
+            axios.get(`${this.apiUrlPerson}?api_key=${this.apiKey}&query=${wha}`)
+                .then((result) => {
+                    // console.log(result);
+                    this.foundedPersons = result.data.results;
+                    console.log(this.foundedPersons);
+                })
+                .catch((error) => {
+                    console.warn(error)
+                })
+        },
     },
     mounted() {
         console.log('HeaderComponent mounted.')
-    }
+    },
+    watch: {
+        // esegui tutte le volte che cambia il valore di searchMovies, richiami getMovies col newVal
+        selectedOption: function (newVal, oldVal) {
+            console.log(newVal);
+            this.$emit('searchAll', this.selectedOption);
+        }
+    },
 }
 </script>
 
 
 <style lang="scss" scoped>
 header {
+
     height: 10vh;
 
     display: flex;
@@ -85,7 +146,7 @@ header {
         box-shadow: none;
         border: 0 !important;
         background: #5c6664;
-        background-image: none;
+
 
         flex: 1;
         padding: 0 .5em;

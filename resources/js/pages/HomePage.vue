@@ -1,6 +1,28 @@
 <template>
     <div class="container-lg">
         <div class="row flex-column">
+
+
+            <!--            The position-relative class is used to set the positioning context for the movies list and arrow buttons.-->
+            <div v-if="!foundedMoviesGift.length > 0" class="position-relative">
+                <img :src="imagePath('movies.png')" alt="Movies Image"
+                     class="img-fluid title-list">
+
+                <!--                The ref attribute is used to create a reference to the cardsContainerMovie element, which is used by -->
+                <!--                the scrollCardsMovie method to scroll the movies list container.-->
+                <div ref="cardsContainerMovie" class="col-12 cards-netflix">
+
+                    <!--                <h1 class="col-12 text-center">ᴍᴏᴠɪᴇꜱ</h1>-->
+                    <MoviesListComponent v-for="movie in foundedTrendingMoviesGift" :key="movie.id" :movie="movie"/>
+                </div>
+                <div class="arrows">
+                    <div class="next p-3 bg-white rounded-circle" @click="scrollCardsMovie('next')">
+                    </div>
+                    <div class="prev p-3 bg-white rounded-circle" @click="scrollCardsMovie('prev')">
+                    </div>
+                </div>
+            </div>
+
             <!--            The position-relative class is used to set the positioning context for the movies list and arrow buttons.-->
             <div v-if="foundedMoviesGift.length > 0" class="position-relative">
                 <img v-if="foundedMoviesGift.length > 0" :src="imagePath('movies.png')" alt="Movies Image"
@@ -75,6 +97,8 @@ export default {
         foundedMoviesGift: Array,
         foundedSeriesGift: Array,
         foundedPersonsGift: Array,
+
+        foundedTrendingMoviesGift: Array,
     },
     methods: {
         imagePath(filename) {
