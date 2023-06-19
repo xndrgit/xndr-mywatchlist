@@ -1,10 +1,11 @@
 <template>
     <div class="container-lg">
-        <div class="row flex-column">
+        <div class="row flex-column my-5 py-5">
 
 
             <div v-if="!foundedMoviesGift.length > 0" class="position-relative">
-
+                <img :src="imagePath('trendingmovies.png')" alt="Movies Image"
+                     class="img-fluid title-list-trending">
                 <!--                The ref attribute is used to create a reference to the cardsContainerMovie element, which is used by -->
                 <!--                the scrollCardsMovie method to scroll the movies list container.-->
                 <div ref="cardsContainerMovie" class="col-12 cards-netflix">
@@ -39,7 +40,10 @@
                 </div>
             </div>
 
+
             <div v-if="!foundedSeriesGift.length > 0" class="position-relative">
+                <img :src="imagePath('trendingseries.png')" alt="TrendingSeriesImage"
+                     class="img-fluid title-list-trending">
                 <div ref="cardsContainerTv" class="col-12 cards-netflix">
                     <!--                <h1 class=" col-12 text-center">ꜱᴇʀɪᴇꜱ</h1>-->
                     <SeriesListComponent v-for="tv in foundedTrendingSeriesGift" :key="tv.id" :tv="tv"/>
@@ -67,6 +71,8 @@
             </div>
 
             <div v-if="!foundedPersonsGift.length > 0" class="position-relative">
+                <img :src="imagePath('trendingpersons.png')" alt="TrendingPersonsImage"
+                     class="img-fluid title-list-trending">
                 <div ref="cardsContainerPerson" class="col-12 cards-netflix">
                     <PersonsListComponent v-for="person in foundedTrendingPersonsGift" v-if="person" :key="person.id"
                                           :person="person"/>
@@ -205,6 +211,15 @@ export default {
         position: absolute;
         top: 0;
         width: 40%;
+
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .title-list-trending {
+        position: absolute;
+        top: 0;
+        width: 80%;
 
         left: 50%;
         transform: translateX(-50%);

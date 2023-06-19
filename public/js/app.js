@@ -4864,7 +4864,7 @@ render._withStripped = true;
     for (var i = 0, len = elements.length; i < len; i++) {
       var _ret = _loop(i);
 
-      if (_ret === "continue") continue;
+      if (_ret === "continue") ;
     }
 
     return createdDocument.body.innerHTML;
@@ -38104,7 +38104,7 @@ function addStyle (obj, options) {
 	// If a transform function was defined, run it on the css
 	if (options.transform && obj.css) {
 	    result = typeof options.transform === 'function'
-		 ? options.transform(obj.css) 
+		 ? options.transform(obj.css)
 		 : options.transform.default(obj.css);
 
 	    if (result) {
@@ -39165,7 +39165,7 @@ function createTextVNode(val) {
 // multiple renders, cloning them avoids errors when DOM manipulations rely
 // on their elm reference.
 function cloneVNode(vnode) {
-    const cloned = new VNode(vnode.tag, vnode.data, 
+    const cloned = new VNode(vnode.tag, vnode.data,
     // #7975
     // clone children array to avoid mutating original in case of cloning
     // a child.
@@ -40561,7 +40561,7 @@ function bindObjectListeners(data, value) {
     return data;
 }
 
-function resolveScopedSlots(fns, res, 
+function resolveScopedSlots(fns, res,
 // the following are added in 2.6
 hasDynamicKeys, contentHashKey) {
     res = res || { $stable: !hasDynamicKeys };
@@ -42601,7 +42601,7 @@ let uid$1 = 0;
  */
 class Watcher {
     constructor(vm, expOrFn, cb, options, isRenderWatcher) {
-        recordEffectScope(this, 
+        recordEffectScope(this,
         // if the active effect scope is manually created (not a component scope),
         // prioritize it
         activeEffectScope && !activeEffectScope._vm
@@ -43501,14 +43501,14 @@ function createComponent(Ctor, data, context, children, tag) {
     const name = getComponentName(Ctor.options) || tag;
     const vnode = new VNode(
     // @ts-expect-error
-    `vue-component-${Ctor.cid}${name ? `-${name}` : ''}`, data, undefined, undefined, undefined, context, 
+    `vue-component-${Ctor.cid}${name ? `-${name}` : ''}`, data, undefined, undefined, undefined, context,
     // @ts-expect-error
     { Ctor, propsData, listeners, tag, children }, asyncFactory);
     return vnode;
 }
 function createComponentInstanceForVnode(
 // we know it's MountedComponentVNode but flow doesn't
-vnode, 
+vnode,
 // activeInstance in lifecycle state
 parent) {
     const options = {
@@ -45583,7 +45583,7 @@ function createPatchFunction(backend) {
                 const oldElm = oldVnode.elm;
                 const parentElm = nodeOps.parentNode(oldElm);
                 // create new node
-                createElm(vnode, insertedVnodeQueue, 
+                createElm(vnode, insertedVnodeQueue,
                 // extremely rare edge case: do not insert if old element is in a
                 // leaving transition. Only happens when combining transition +
                 // keep-alive + HOCs. (#4590)
@@ -46481,7 +46481,7 @@ function add(name, handler, capture, passive) {
     target.addEventListener(name, handler, supportsPassive ? { capture, passive } : capture);
 }
 function remove(name, handler, capture, _target) {
-    (_target || target).removeEventListener(name, 
+    (_target || target).removeEventListener(name,
     //@ts-expect-error
     handler._wrapper || handler, capture);
 }
@@ -50434,10 +50434,13 @@ module.exports = function(module) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./movies.png": "./public/images/movies.png",
-	"./mylist.png": "./public/images/mylist.png",
-	"./persons.png": "./public/images/persons.png",
-	"./tvshows.png": "./public/images/tvshows.png"
+    "./movies.png": "./public/images/movies.png",
+    "./mylist.png": "./public/images/mylist.png",
+    "./persons.png": "./public/images/persons.png",
+    "./trendingmovies.png": "./public/images/trendingmovies.png",
+    "./trendingpersons.png": "./public/images/trendingpersons.png",
+    "./trendingseries.png": "./public/images/trendingseries.png",
+    "./tvshows.png": "./public/images/tvshows.png"
 };
 
 
@@ -50484,23 +50487,60 @@ module.exports = "/images/mylist.png?af410a7ce6a4a79ca4bcb9b02f8f3fe0";
 
 /***/ }),
 
-/***/ "./public/images/persons.png":
-/*!***********************************!*\
-  !*** ./public/images/persons.png ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+        /***/ "./public/images/persons.png":
+        /*!***********************************!*\
+          !*** ./public/images/persons.png ***!
+          \***********************************/
+        /*! no static exports found */
+        /***/ (function (module, exports) {
 
-module.exports = "/images/persons.png?c11a28c00647ce62c5f54de09de1b617";
+            module.exports = "/images/persons.png?c11a28c00647ce62c5f54de09de1b617";
 
-/***/ }),
+            /***/
+        }),
 
-/***/ "./public/images/tvshows.png":
-/*!***********************************!*\
-  !*** ./public/images/tvshows.png ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+        /***/ "./public/images/trendingmovies.png":
+        /*!******************************************!*\
+          !*** ./public/images/trendingmovies.png ***!
+          \******************************************/
+        /*! no static exports found */
+        /***/ (function (module, exports) {
+
+            module.exports = "/images/trendingmovies.png?06f51e5e9211b754162164de2fcf1902";
+
+            /***/
+        }),
+
+        /***/ "./public/images/trendingpersons.png":
+        /*!*******************************************!*\
+          !*** ./public/images/trendingpersons.png ***!
+          \*******************************************/
+        /*! no static exports found */
+        /***/ (function (module, exports) {
+
+            module.exports = "/images/trendingpersons.png?a9f9f7f36d46e19d5aaa1ff4f0e3282c";
+
+            /***/
+        }),
+
+        /***/ "./public/images/trendingseries.png":
+        /*!******************************************!*\
+          !*** ./public/images/trendingseries.png ***!
+          \******************************************/
+        /*! no static exports found */
+        /***/ (function (module, exports) {
+
+            module.exports = "/images/trendingseries.png?07535196ef7874bfead3d79e635c2185";
+
+            /***/
+        }),
+
+        /***/ "./public/images/tvshows.png":
+        /*!***********************************!*\
+          !*** ./public/images/tvshows.png ***!
+          \***********************************/
+        /*! no static exports found */
+        /***/ (function (module, exports) {
 
 module.exports = "/images/tvshows.png?61d27878913def40fe6d9cbef9589597";
 
@@ -50625,7 +50665,7 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
   null,
   "153bfd55",
   null
-  
+
 )
 
 /* hot reload */
@@ -50645,7 +50685,7 @@ component.options.__file = "resources/js/components/HeaderComponent.vue"
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_HeaderComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./HeaderComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HeaderComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_HeaderComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_HeaderComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]);
 
 /***/ }),
 
