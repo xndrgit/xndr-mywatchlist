@@ -2175,7 +2175,9 @@ __webpack_require__.r(__webpack_exports__);
     foundedMoviesGift: Array,
     foundedSeriesGift: Array,
     foundedPersonsGift: Array,
-    foundedTrendingMoviesGift: Array
+    foundedTrendingMoviesGift: Array,
+    foundedTrendingSeriesGift: Array,
+    foundedTrendingPersonsGift: Array
   },
   methods: {
     imagePath: function imagePath(filename) {
@@ -2268,7 +2270,8 @@ __webpack_require__.r(__webpack_exports__);
     MoviesListComponent: _components_MoviesListComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   props: {
-    foundedMoviesGift: Array
+    foundedMoviesGift: Array,
+    foundedTrendingMoviesGift: Array
   }
 });
 
@@ -2294,7 +2297,8 @@ __webpack_require__.r(__webpack_exports__);
     PersonsListComponent: _components_PersonsListComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   props: {
-    foundedPersonsGift: Array
+    foundedPersonsGift: Array,
+    foundedTrendingPersonsGift: Array
   }
 });
 
@@ -2320,7 +2324,8 @@ __webpack_require__.r(__webpack_exports__);
     SeriesListComponent: _components_SeriesListComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   props: {
-    foundedSeriesGift: Array
+    foundedSeriesGift: Array,
+    foundedTrendingSeriesGift: Array
   }
 });
 
@@ -2420,7 +2425,24 @@ __webpack_require__.r(__webpack_exports__);
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("".concat(this.apiUrlTrendingMovie, "?api_key=").concat(this.apiKey)).then(function (result) {
         // console.log(result);
         _this4.foundedTrendingMovies = result.data.results;
-        console.log(_this4.foundedTrendingMovies);
+      })["catch"](function (error) {
+        console.warn(error);
+      });
+    },
+    getTrendingSeries: function getTrendingSeries(wha) {
+      var _this5 = this;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("".concat(this.apiUrlTrendingTv, "?api_key=").concat(this.apiKey)).then(function (result) {
+        // console.log(result);
+        _this5.foundedTrendingSeries = result.data.results;
+      })["catch"](function (error) {
+        console.warn(error);
+      });
+    },
+    getTrendingPersons: function getTrendingPersons(wha) {
+      var _this6 = this;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("".concat(this.apiUrlTrendingPerson, "?api_key=").concat(this.apiKey)).then(function (result) {
+        _this6.foundedTrendingPersons = result.data.results;
+        console.log(_this6.foundedTrendingPersons);
       })["catch"](function (error) {
         console.warn(error);
       });
@@ -2460,6 +2482,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     this.getTrendingMovies();
+    this.getTrendingSeries();
+    this.getTrendingPersons();
+
     // Retrieve searchAllOld from Local Storage
     var searchAllOld = JSON.parse(localStorage.getItem('searchAllOld')) || [];
     this.searchAllOld = searchAllOld;
@@ -2908,13 +2933,7 @@ var render = function render() {
     staticClass: "row flex-column"
   }, [!_vm.foundedMoviesGift.length > 0 ? _c("div", {
     staticClass: "position-relative"
-  }, [_c("img", {
-    staticClass: "img-fluid title-list",
-    attrs: {
-      src: _vm.imagePath("movies.png"),
-      alt: "Movies Image"
-    }
-  }), _vm._v(" "), _c("div", {
+  }, [_c("div", {
     ref: "cardsContainerMovie",
     staticClass: "col-12 cards-netflix"
   }, _vm._l(_vm.foundedTrendingMoviesGift, function (movie) {
@@ -2974,6 +2993,34 @@ var render = function render() {
         return _vm.scrollCardsMovie("prev");
       }
     }
+  })])]) : _vm._e(), _vm._v(" "), !_vm.foundedSeriesGift.length > 0 ? _c("div", {
+    staticClass: "position-relative"
+  }, [_c("div", {
+    ref: "cardsContainerTv",
+    staticClass: "col-12 cards-netflix"
+  }, _vm._l(_vm.foundedTrendingSeriesGift, function (tv) {
+    return _c("SeriesListComponent", {
+      key: tv.id,
+      attrs: {
+        tv: tv
+      }
+    });
+  }), 1), _vm._v(" "), _c("div", {
+    staticClass: "arrows"
+  }, [_c("div", {
+    staticClass: "next p-3 bg-white rounded-circle",
+    on: {
+      click: function click($event) {
+        return _vm.scrollCardsTv("next");
+      }
+    }
+  }), _vm._v(" "), _c("div", {
+    staticClass: "prev p-3 bg-white rounded-circle",
+    on: {
+      click: function click($event) {
+        return _vm.scrollCardsTv("prev");
+      }
+    }
   })])]) : _vm._e(), _vm._v(" "), _vm.foundedSeriesGift.length > 0 ? _c("div", {
     staticClass: "position-relative"
   }, [_vm.foundedSeriesGift.length > 0 ? _c("img", {
@@ -3006,6 +3053,34 @@ var render = function render() {
     on: {
       click: function click($event) {
         return _vm.scrollCardsTv("prev");
+      }
+    }
+  })])]) : _vm._e(), _vm._v(" "), !_vm.foundedPersonsGift.length > 0 ? _c("div", {
+    staticClass: "position-relative"
+  }, [_c("div", {
+    ref: "cardsContainerPerson",
+    staticClass: "col-12 cards-netflix"
+  }, _vm._l(_vm.foundedTrendingPersonsGift, function (person) {
+    return person ? _c("PersonsListComponent", {
+      key: person.id,
+      attrs: {
+        person: person
+      }
+    }) : _vm._e();
+  }), 1), _vm._v(" "), _c("div", {
+    staticClass: "arrows"
+  }, [_c("div", {
+    staticClass: "next p-3 bg-white rounded-circle",
+    on: {
+      click: function click($event) {
+        return _vm.scrollCardsPersons("next");
+      }
+    }
+  }), _vm._v(" "), _c("div", {
+    staticClass: "prev p-3 bg-white rounded-circle",
+    on: {
+      click: function click($event) {
+        return _vm.scrollCardsPersons("prev");
       }
     }
   })])]) : _vm._e(), _vm._v(" "), _vm.foundedPersonsGift.length > 0 ? _c("div", {
@@ -3070,14 +3145,21 @@ var render = function render() {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col-12 cards-netflix"
-  }, _vm._l(_vm.foundedMoviesGift, function (movie) {
-    return _c("MoviesListComponent", {
+  }, [_vm._l(_vm.foundedTrendingMoviesGift, function (movie) {
+    return !_vm.foundedMoviesGift.length > 0 ? _c("MoviesListComponent", {
       key: movie.id,
       attrs: {
         movie: movie
       }
-    });
-  }), 1)])]);
+    }) : _vm._e();
+  }), _vm._v(" "), _vm._l(_vm.foundedMoviesGift, function (movie) {
+    return _vm.foundedMoviesGift.length > 0 ? _c("MoviesListComponent", {
+      key: movie.id,
+      attrs: {
+        movie: movie
+      }
+    }) : _vm._e();
+  })], 2)])]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -3105,14 +3187,21 @@ var render = function render() {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col-12 cards-netflix"
-  }, _vm._l(_vm.foundedPersonsGift, function (person) {
-    return _c("PersonsListComponent", {
+  }, [_vm._l(_vm.foundedTrendingPersonsGift, function (person) {
+    return !_vm.foundedPersonsGift.length > 0 ? _c("PersonsListComponent", {
       key: person.id,
       attrs: {
         person: person
       }
-    });
-  }), 1)])]);
+    }) : _vm._e();
+  }), _vm._v(" "), _vm._l(_vm.foundedPersonsGift, function (person) {
+    return _vm.foundedPersonsGift.length > 0 ? _c("PersonsListComponent", {
+      key: person.id,
+      attrs: {
+        person: person
+      }
+    }) : _vm._e();
+  })], 2)])]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -3140,14 +3229,21 @@ var render = function render() {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col-12 cards-netflix"
-  }, _vm._l(_vm.foundedSeriesGift, function (tv) {
-    return _c("SeriesListComponent", {
+  }, [_vm._l(_vm.foundedTrendingSeriesGift, function (tv) {
+    return !_vm.foundedSeriesGift.length > 0 ? _c("SeriesListComponent", {
       key: tv.id,
       attrs: {
         tv: tv
       }
-    });
-  }), 1)])]);
+    }) : _vm._e();
+  }), _vm._v(" "), _vm._l(_vm.foundedSeriesGift, function (tv) {
+    return _vm.foundedSeriesGift.length > 0 ? _c("SeriesListComponent", {
+      key: tv.id,
+      attrs: {
+        tv: tv
+      }
+    }) : _vm._e();
+  })], 2)])]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -3184,7 +3280,9 @@ var render = function render() {
       foundedMoviesGift: _vm.foundedMovies,
       foundedPersonsGift: _vm.foundedPersons,
       foundedSeriesGift: _vm.foundedSeries,
-      foundedTrendingMoviesGift: _vm.foundedTrendingMovies
+      foundedTrendingMoviesGift: _vm.foundedTrendingMovies,
+      foundedTrendingPersonsGift: _vm.foundedTrendingPersons,
+      foundedTrendingSeriesGift: _vm.foundedTrendingSeries
     }
   }), _vm._v(" "), _c("FooterComponent")], 1);
 };

@@ -3,7 +3,11 @@
 
         <HeaderComponent :searchAllOldGift="searchAllOld" @searchAll="searchAllFunction" @update-data="updateData"/>
         <router-view :foundedMoviesGift="foundedMovies" :foundedPersonsGift="foundedPersons"
-                     :foundedSeriesGift="foundedSeries" :foundedTrendingMoviesGift="foundedTrendingMovies"
+                     :foundedSeriesGift="foundedSeries"
+
+                     :foundedTrendingMoviesGift="foundedTrendingMovies"
+                     :foundedTrendingPersonsGift="foundedTrendingPersons"
+                     :foundedTrendingSeriesGift="foundedTrendingSeries"
         >
 
         </router-view>
@@ -106,12 +110,31 @@ export default {
                 .then((result) => {
                     // console.log(result);
                     this.foundedTrendingMovies = result.data.results;
-                    console.log(this.foundedTrendingMovies);
                 })
                 .catch((error) => {
                     console.warn(error)
                 })
         },
+        getTrendingSeries(wha) {
+            axios.get(`${this.apiUrlTrendingTv}?api_key=${this.apiKey}`)
+                .then((result) => {
+                    // console.log(result);
+                    this.foundedTrendingSeries = result.data.results;
+                })
+                .catch((error) => {
+                    console.warn(error)
+                })
+        },
+        getTrendingPersons(wha) {
+            axios.get(`${this.apiUrlTrendingPerson}?api_key=${this.apiKey}`)
+                .then((result) => {
+                    this.foundedTrendingPersons = result.data.results;
+                    console.log(this.foundedTrendingPersons);
+                })
+                .catch((error) => {
+                    console.warn(error)
+                })
+        }
 
 
     },
@@ -155,6 +178,9 @@ export default {
     },
     created() {
         this.getTrendingMovies();
+        this.getTrendingSeries();
+        this.getTrendingPersons();
+
         // Retrieve searchAllOld from Local Storage
         let searchAllOld = JSON.parse(localStorage.getItem('searchAllOld')) || [];
         this.searchAllOld = searchAllOld;

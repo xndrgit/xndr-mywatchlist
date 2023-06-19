@@ -2,7 +2,10 @@
     <div class="container-lg">
         <div class="row">
             <div class="col-12 cards-netflix">
-                <MoviesListComponent v-for="movie in foundedMoviesGift" :key="movie.id" :movie="movie"/>
+                <MoviesListComponent v-for="movie in foundedTrendingMoviesGift" v-if="!foundedMoviesGift.length > 0"
+                                     :key="movie.id" :movie="movie"/>
+                <MoviesListComponent v-for="movie in foundedMoviesGift" v-if="foundedMoviesGift.length > 0"
+                                     :key="movie.id" :movie="movie"/>
             </div>
         </div>
     </div>
@@ -21,6 +24,7 @@ export default {
     },
     props: {
         foundedMoviesGift: Array,
+        foundedTrendingMoviesGift: Array,
     }
 }
 </script>
