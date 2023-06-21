@@ -2,10 +2,10 @@
     <header class="row">
         <nav class="col-12 navbar navbar-expand-lg navbar-dark">
             <router-link class="navbar-brand col-lg-3 d-flex justify-content-center" to="/">
-                <!--                <img alt="Rick & Morty Logo"-->
-                <!--                     :src="imagePath('mylist.png')" class="img-fluid">-->
-                <!--                &lt;!&ndash;                     height="30" :src="srcLogo">&ndash;&gt;-->
-                <h1 class="font-weight-bold">MyWatchList</h1>
+                <img :src="imagePath('favicon.png')"
+                     alt="Logo" class="img-fluid mr-2">
+                <!--                     height="30" :src="srcLogo">-->
+                <h2 class="font-weight-bold">MyWatchList</h2>
             </router-link>
             <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
                     class="navbar-toggler"
@@ -134,6 +134,11 @@ header {
     display: flex;
     align-content: center;
     justify-content: space-between;
+
+
+    img {
+        max-height: 30px;
+    }
 
 
     select {
