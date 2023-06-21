@@ -2,6 +2,8 @@
     <div class="container-lg">
         <div class="row">
             <div class="col-12 cards-netflix">
+                <img v-if="!foundedMoviesGift.length > 0" :src="imagePath('trendingmovies.png')" alt="Movies Image"
+                     class="img-fluid title-list-trending">
                 <MoviesListComponent v-for="movie in foundedTrendingMoviesGift" v-if="!foundedMoviesGift.length > 0"
                                      :key="movie.id" :movie="movie"/>
                 <MoviesListComponent v-for="movie in foundedMoviesGift" v-if="foundedMoviesGift.length > 0"
@@ -25,6 +27,11 @@ export default {
     props: {
         foundedMoviesGift: Array,
         foundedTrendingMoviesGift: Array,
+    },
+    methods: {
+        imagePath(filename) {
+            return require(`../../../public/images/${filename}`);
+        },
     }
 }
 </script>
