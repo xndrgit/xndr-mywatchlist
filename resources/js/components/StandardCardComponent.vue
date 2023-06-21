@@ -309,7 +309,7 @@ img {
             display: inline-block;
             opacity: 1;
             width: 100%;
-            transform: scale(1.1) translateY(-10%);
+            transform: scale(1) translateY(-10%);
 
             @include desktop {
                 width: 100%;

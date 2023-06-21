@@ -22,7 +22,7 @@
             </div>
             <!--            The position-relative class is used to set the positioning context for the movies list and arrow buttons.-->
             <div v-if="foundedMoviesGift.length > 0" class="position-relative">
-                <img v-if="foundedMoviesGift.length > 0" :src="imagePath('movies.png')" alt="Movies Image"
+                <img v-if="foundedMoviesGift.length > 0" :src="imagePath('movies.png')" alt="MoviesImage"
                      class="img-fluid title-list">
 
                 <!--                The ref attribute is used to create a reference to the cardsContainerMovie element, which is used by -->
@@ -56,7 +56,7 @@
                 </div>
             </div>
             <div v-if="foundedSeriesGift.length > 0" class="position-relative">
-                <img v-if="foundedSeriesGift.length > 0" :src="imagePath('tvshows.png')" alt="Tv Shows Image"
+                <img v-if="foundedSeriesGift.length > 0" :src="imagePath('series.png')" alt="SeriesImage"
                      class="img-fluid title-list">
                 <div ref="cardsContainerTv" class="col-12 cards-netflix">
                     <!--                <h1 class=" col-12 text-center">ꜱᴇʀɪᴇꜱ</h1>-->
@@ -85,7 +85,7 @@
                 </div>
             </div>
             <div v-if="foundedPersonsGift.length > 0" class="position-relative">
-                <img v-if="foundedPersonsGift.length > 0" :src="imagePath('persons.png')" alt="Persons Image"
+                <img v-if="foundedPersonsGift.length > 0" :src="imagePath('persons.png')" alt="PersonsImage"
                      class="img-fluid title-list">
                 <div ref="cardsContainerPerson" class="col-12 cards-netflix">
                     <PersonsListComponent v-for="person in foundedPersonsGift" v-if="person" :key="person.id"
@@ -207,13 +207,16 @@ export default {
 .row {
     min-height: 80vh;
 
+
     .title-list {
         position: absolute;
         top: 0;
-        width: 40%;
+        width: 80%;
 
         left: 50%;
         transform: translateX(-50%);
+
+        z-index: 10;
     }
 
     .title-list-trending {
@@ -223,6 +226,8 @@ export default {
 
         left: 50%;
         transform: translateX(-50%);
+
+        z-index: 10;
     }
 
     .prev {
@@ -258,7 +263,7 @@ export default {
 
     .cards-netflix {
 
-        min-height: 680px;
+        min-height: 640px;
 
         display: flex;
         align-items: center;
@@ -270,6 +275,12 @@ export default {
         //The white-space: nowrap property is used to prevent the cards from wrapping to the next line, which is necessary to keep them in a single row. If the cards were allowed to wrap, the horizontal scrolling would not work as expected.
         white-space: nowrap;
         flex-wrap: nowrap;
+
+        background-image: url(https://media.tenor.com/BOu8ryjIR38AAAAC/sound-wave-wave.gif);
+        background-repeat: no-repeat;
+        background-position-x: center;
+        background-position-y: center;
+        background-size: cover;
 
 
     }

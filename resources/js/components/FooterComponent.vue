@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <span>&copy; 2023 Netflix Fan Site</span>
+                    <span>&copy; 2023 My Watch List Fan Site</span>
                 </div>
                 <div class="col-md-6 text-md-right">
                     <span><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></span>

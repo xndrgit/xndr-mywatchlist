@@ -1,7 +1,10 @@
 <template>
     <div class="container-lg dark-mode">
 
+
         <HeaderComponent :searchAllOldGift="searchAllOld" @searchAll="searchAllFunction" @update-data="updateData"/>
+
+
         <router-view :foundedMoviesGift="foundedMovies" :foundedPersonsGift="foundedPersons"
                      :foundedSeriesGift="foundedSeries"
 

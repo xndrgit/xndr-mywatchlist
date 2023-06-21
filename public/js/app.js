@@ -38103,7 +38103,7 @@ function addStyle (obj, options) {
 
 	// If a transform function was defined, run it on the css
 	if (options.transform && obj.css) {
-	    result = typeof options.transform === 'function'
+        result = typeof options.transform === 'function'
             ? options.transform(obj.css)
             : options.transform.default(obj.css);
 
@@ -40571,16 +40571,16 @@ function bindObjectListeners(data, value) {
                             resolveScopedSlots(slot, res, hasDynamicKeys);
                         } else if (slot) {
                             // marker for reverse proxying v-slot without scope on this.$slots
-            // @ts-expect-error
-            if (slot.proxy) {
-                // @ts-expect-error
-                slot.fn.proxy = true;
-            }
-            res[slot.key] = slot.fn;
-        }
-    }
-    if (contentHashKey) {
-        res.$key = contentHashKey;
+                            // @ts-expect-error
+                            if (slot.proxy) {
+                                // @ts-expect-error
+                                slot.fn.proxy = true;
+                            }
+                            res[slot.key] = slot.fn;
+                        }
+                    }
+                    if (contentHashKey) {
+                        res.$key = contentHashKey;
     }
     return res;
 }
@@ -50436,10 +50436,10 @@ var map = {
     "./movies.png": "./public/images/movies.png",
     "./mylist.png": "./public/images/mylist.png",
     "./persons.png": "./public/images/persons.png",
+    "./series.png": "./public/images/series.png",
     "./trendingmovies.png": "./public/images/trendingmovies.png",
     "./trendingpersons.png": "./public/images/trendingpersons.png",
-    "./trendingseries.png": "./public/images/trendingseries.png",
-    "./tvshows.png": "./public/images/tvshows.png"
+    "./trendingseries.png": "./public/images/trendingseries.png"
 };
 
 
@@ -50471,11 +50471,11 @@ webpackContext.id = "./public/images sync recursive ^\\.\\/.*$";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/movies.png?3260ad673e2a415e521cb04c3b0d1523";
+            module.exports = "/images/movies.png?b72cb33d80eef70068480908a0b5baae";
 
 /***/ }),
 
-/***/ "./public/images/mylist.png":
+        /***/ "./public/images/mylist.png":
         /*!**********************************!*\
           !*** ./public/images/mylist.png ***!
           \**********************************/
@@ -50494,7 +50494,19 @@ module.exports = "/images/movies.png?3260ad673e2a415e521cb04c3b0d1523";
         /*! no static exports found */
         /***/ (function (module, exports) {
 
-            module.exports = "/images/persons.png?c11a28c00647ce62c5f54de09de1b617";
+            module.exports = "/images/persons.png?2e82b8b6b27ec9d68c95b18936f13f10";
+
+            /***/
+        }),
+
+        /***/ "./public/images/series.png":
+        /*!**********************************!*\
+          !*** ./public/images/series.png ***!
+          \**********************************/
+        /*! no static exports found */
+        /***/ (function (module, exports) {
+
+            module.exports = "/images/series.png?42bf366959db75c24b352b8e3988e566";
 
             /***/
         }),
@@ -50535,33 +50547,21 @@ module.exports = "/images/movies.png?3260ad673e2a415e521cb04c3b0d1523";
             /***/
         }),
 
-        /***/ "./public/images/tvshows.png":
-        /*!***********************************!*\
-          !*** ./public/images/tvshows.png ***!
-          \***********************************/
-        /*! no static exports found */
-        /***/ (function (module, exports) {
-
-            module.exports = "/images/tvshows.png?61d27878913def40fe6d9cbef9589597";
-
-            /***/
-        }),
-
         /***/ "./resources/js/app.js":
         /*!*****************************!*\
           !*** ./resources/js/app.js ***!
           \*****************************/
         /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+        /***/ (function (module, exports, __webpack_require__) {
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+            /**
+             * First we will load all of this project's JavaScript dependencies which
+             * includes Vue and other libraries. It is a great starting point when
+             * building robust, powerful web applications using Vue and Laravel.
+             */
 
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
-window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+            __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+            window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 
 /**
  * The following block of code may be used to automatically register your
@@ -50679,8 +50679,8 @@ component.options.__file = "resources/js/components/HeaderComponent.vue"
 /*!******************************************************************************!*\
   !*** ./resources/js/components/HeaderComponent.vue?vue&type=script&lang=js& ***!
   \******************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
 
             "use strict";
             __webpack_require__.r(__webpack_exports__);
@@ -50692,15 +50692,15 @@ component.options.__file = "resources/js/components/HeaderComponent.vue"
             /***/
         }),
 
-/***/ "./resources/js/components/HeaderComponent.vue?vue&type=style&index=0&id=153bfd55&lang=scss&scoped=true&":
-/*!***************************************************************************************************************!*\
-  !*** ./resources/js/components/HeaderComponent.vue?vue&type=style&index=0&id=153bfd55&lang=scss&scoped=true& ***!
-  \***************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+        /***/ "./resources/js/components/HeaderComponent.vue?vue&type=style&index=0&id=153bfd55&lang=scss&scoped=true&":
+        /*!***************************************************************************************************************!*\
+          !*** ./resources/js/components/HeaderComponent.vue?vue&type=style&index=0&id=153bfd55&lang=scss&scoped=true& ***!
+          \***************************************************************************************************************/
+        /*! no static exports found */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_HeaderComponent_vue_vue_type_style_index_0_id_153bfd55_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./HeaderComponent.vue?vue&type=style&index=0&id=153bfd55&lang=scss&scoped=true& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HeaderComponent.vue?vue&type=style&index=0&id=153bfd55&lang=scss&scoped=true&");
 /* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_HeaderComponent_vue_vue_type_style_index_0_id_153bfd55_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_HeaderComponent_vue_vue_type_style_index_0_id_153bfd55_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
 /* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_HeaderComponent_vue_vue_type_style_index_0_id_153bfd55_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_HeaderComponent_vue_vue_type_style_index_0_id_153bfd55_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
