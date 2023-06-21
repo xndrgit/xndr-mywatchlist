@@ -2006,8 +2006,8 @@ var render = function render() {
   }, [_c("img", {
       staticClass: "img-fluid mr-2",
       attrs: {
-          alt: "Logo",
-          src: _vm.imagePath("favicon.png")
+          src: _vm.imagePath("favicon.png"),
+          alt: "Logo"
       }
   }), _vm._v(" "), _c("h2", {
       staticClass: "font-weight-bold"
@@ -50440,6 +50440,7 @@ module.exports = function(module) {
 
 var map = {
     "./favicon.png": "./public/images/favicon.png",
+    "./just4pc.jpg": "./public/images/just4pc.jpg",
     "./movies.png": "./public/images/movies.png",
     "./mylist.png": "./public/images/mylist.png",
     "./persons.png": "./public/images/persons.png",
@@ -50459,8 +50460,8 @@ function webpackContextResolve(req) {
 		var e = new Error("Cannot find module '" + req + "'");
 		e.code = 'MODULE_NOT_FOUND';
 		throw e;
-	}
-	return map[req];
+    }
+    return map[req];
 }
 
             webpackContext.keys = function webpackContextKeys() {
@@ -50482,6 +50483,19 @@ function webpackContextResolve(req) {
         /***/ (function (module, exports) {
 
             module.exports = "/images/favicon.png?3d4d549851309311350f175245e05b53";
+
+            /***/
+        }),
+
+        /***/
+        "./public/images/just4pc.jpg":
+        /*!***********************************!*\
+          !*** ./public/images/just4pc.jpg ***!
+          \***********************************/
+        /*! no static exports found */
+        /***/ (function (module, exports) {
+
+            module.exports = "/images/just4pc.jpg?fbf4029fcafba4b25aa0e221ee10ba0d";
 
             /***/
         }),
