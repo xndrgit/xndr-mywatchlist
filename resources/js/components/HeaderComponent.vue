@@ -22,6 +22,7 @@
 
             <select onchange="window.location.href=this.value;">
                 <option disabled selected>🔎 Select</option>
+                <option value="/">🪄 All</option>
                 <option value="/movies">🎥 Movies</option>
                 <option value="/series">🎬 Series</option>
                 <option value="/persons">👤 Persons</option>

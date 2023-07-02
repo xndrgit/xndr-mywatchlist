@@ -2680,6 +2680,10 @@ var staticRenderFns = [function () {
     }
   }, [_vm._v("🔎 Select")]), _vm._v(" "), _c("option", {
     attrs: {
+      value: "/"
+    }
+  }, [_vm._v("🪄 All")]), _vm._v(" "), _c("option", {
+    attrs: {
       value: "/movies"
     }
   }, [_vm._v("🎥 Movies")]), _vm._v(" "), _c("option", {
@@ -2853,62 +2857,7 @@ var render = function render() {
     }
   })]), _vm._v(" "), _c("div", {
     staticClass: "card__body"
-  }, [_c("div", {
-    staticClass: "flex justify-between items-center"
-  }, [_c("div", [_c("button", {
-    staticClass: "btn btn--transparent btn--circle"
-  }, [_c("svg", {
-    staticClass: "card__icon",
-    attrs: {
-      fill: "none",
-      height: "24",
-      viewBox: "0 0 24 24",
-      width: "24",
-      xmlns: "http://www.w3.org/2000/svg"
-    }
-  }, [_c("path", {
-    attrs: {
-      d: "M21.44 10.72L5.96 2.98A1.38 1.38 0 004 4.213v15.474a1.373 1.373 0 002 1.233l15.44-7.74a1.38 1.38 0 000-2.467v.007z"
-    }
-  })])]), _vm._v(" "), _c("button", {
-    staticClass: "btn btn--transparent btn--circle"
-  }, [_c("svg", {
-    staticClass: "card__icon",
-    attrs: {
-      fill: "none",
-      height: "24",
-      viewBox: "0 0 24 24",
-      width: "24",
-      xmlns: "http://www.w3.org/2000/svg"
-    }
-  }, [_c("path", {
-    attrs: {
-      d: "M12 0a1.5 1.5 0 011.5 1.5v9h9a1.5 1.5 0 110 3h-9v9a1.5 1.5 0 11-3 0v-9h-9a1.5 1.5 0 110-3h9v-9A1.5 1.5 0 0112 0z"
-    }
-  })])]), _vm._v(" "), _vm.item.vote_average > 0 ? _c("button", {
-    staticClass: "p-0 btn btn--transparent btn--circle"
-  }, [_c("RatingCircleComponent", {
-    attrs: {
-      vote: _vm.item.vote_average
-    }
-  })], 1) : _vm._e()]), _vm._v(" "), _c("button", {
-    staticClass: "btn btn--transparent btn--circle"
-  }, [_c("svg", {
-    staticClass: "card__icon",
-    attrs: {
-      fill: "currentColor",
-      height: "24",
-      viewBox: "0 0 24 24",
-      width: "24",
-      xmlns: "http://www.w3.org/2000/svg"
-    }
-  }, [_c("path", {
-    attrs: {
-      "clip-rule": "evenodd",
-      d: "M2.469 6.969a.75.75 0 011.062 0L12 15.439l8.469-8.47a.75.75 0 111.062 1.062l-9 9a.75.75 0 01-1.062 0l-9-9a.75.75 0 010-1.062z",
-      "fill-rule": "evenodd"
-    }
-  })])])]), _vm._v(" "), _c("p", {
+  }, [_c("p", {
     staticClass: "card__title text"
   }, [_c("span", {
     staticClass: "text&#45;&#45;bold"
@@ -2943,7 +2892,7 @@ var render = function render() {
   return _c("div", {
     staticClass: "container-lg"
   }, [_c("div", {
-    staticClass: "row flex-column my-5 py-5"
+    staticClass: "row flex-column"
   }, [!_vm.foundedMoviesGift.length > 0 ? _c("div", {
     staticClass: "position-relative"
   }, [_c("img", {
@@ -3428,7 +3377,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "img[data-v-daadd296] {\n  width: 100%;\n  height: 100%;\n}\n.text[data-v-daadd296] {\n  font-size: 0.5rem;\n}\n@media (min-width: 768px) and (max-width: 1023px) {\n.text[data-v-daadd296] {\n    font-size: 0.7rem;\n}\n}\n@media (min-width: 1024px) {\n.text[data-v-daadd296] {\n    font-size: 0.9rem;\n}\n}\n.text--bold[data-v-daadd296] {\n  font-weight: 700;\n  margin-right: 0.3rem;\n}\n.text--muted[data-v-daadd296] {\n  color: grey;\n}\n.text--size10[data-v-daadd296] {\n  font-size: 10px;\n}\n.text--white[data-v-daadd296] {\n  color: white;\n}\n.text--category[data-v-daadd296] {\n  font-size: 0.7rem;\n  margin-bottom: 1rem;\n}\n@media (min-width: 768px) and (max-width: 1023px) {\n.text--category[data-v-daadd296] {\n    font-size: 0.9rem;\n}\n}\n@media (min-width: 1024px) {\n.text--category[data-v-daadd296] {\n    font-size: 1.1rem;\n}\n}\n.flex[data-v-daadd296] {\n  display: flex;\n}\n.justify-between[data-v-daadd296] {\n  justify-content: space-between;\n}\n.items-center[data-v-daadd296] {\n  align-items: center;\n}\n.wrapper[data-v-daadd296] {\n  position: relative;\n  padding: 10px;\n}\n.wrapper__front[data-v-daadd296] {\n  position: relative;\n  transition: all 250ms ease-out;\n  transition-delay: 300ms;\n}\n.wrapper__back[data-v-daadd296] {\n  position: absolute;\n  opacity: 0;\n  width: 150%;\n  transition: all 250ms ease-out;\n  transition-delay: 100ms;\n  z-index: 999;\n}\n@media (min-width: 1024px) {\n.wrapper__back[data-v-daadd296] {\n    width: 100%;\n    top: 0;\n}\n}\n.wrapper:hover .wrapper__front[data-v-daadd296] {\n  opacity: 0;\n}\n.wrapper:hover .wrapper__back[data-v-daadd296] {\n  display: inline-block;\n  opacity: 1;\n  width: 100%;\n  transform: scale(1) translateY(-10%);\n}\n@media (min-width: 1024px) {\n.wrapper:hover .wrapper__back[data-v-daadd296] {\n    width: 100%;\n}\n}\n.card[data-v-daadd296] {\n  overflow: hidden;\n  background-color: #141414;\n  box-shadow: 0 0 10px 1px #0a0a0a;\n}\n.card--rounded[data-v-daadd296] {\n  border-radius: 10px;\n}\n.card--vote[data-v-daadd296] {\n  position: absolute;\n}\n.card__body[data-v-daadd296] {\n  padding: 1.25rem 0.75rem;\n}\n.card__icon[data-v-daadd296] {\n  width: 0.6rem;\n  height: 0.6rem;\n  fill: white;\n}\n@media (min-width: 768px) and (max-width: 1023px) {\n.card__icon[data-v-daadd296] {\n    width: 0.8rem;\n    height: 0.8rem;\n}\n}\n@media (min-width: 1024px) {\n.card__icon[data-v-daadd296] {\n    width: 1rem;\n    height: 1rem;\n}\n}\n.card__title[data-v-daadd296] {\n  color: white;\n  margin-top: 1.25rem;\n  max-width: -moz-fit-content;\n  max-width: fit-content;\n  overflow: hidden;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n}\n.btn[data-v-daadd296] {\n  padding: 0.5rem;\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  border: 2px solid rgba(255, 255, 255, 0.5);\n  cursor: pointer;\n  transition: all 250ms;\n}\n.btn--front[data-v-daadd296] {\n  margin: 0.3rem;\n}\n.btn--transparent[data-v-daadd296] {\n  background: transparent;\n}\n.btn--circle[data-v-daadd296] {\n  border-radius: 50%;\n}\n.btn[data-v-daadd296]:hover {\n  background: white;\n}\n.btn:hover .card__icon[data-v-daadd296] {\n  fill: #141414;\n}", ""]);
+exports.push([module.i, "img[data-v-daadd296] {\n  width: 100%;\n  height: 100%;\n}\n.text[data-v-daadd296] {\n  font-size: 0.5rem;\n}\n@media (min-width: 768px) and (max-width: 1023px) {\n.text[data-v-daadd296] {\n    font-size: 0.7rem;\n}\n}\n@media (min-width: 1024px) {\n.text[data-v-daadd296] {\n    font-size: 0.9rem;\n}\n}\n.text--bold[data-v-daadd296] {\n  font-weight: 700;\n  margin-right: 0.3rem;\n}\n.text--muted[data-v-daadd296] {\n  color: grey;\n}\n.text--size10[data-v-daadd296] {\n  font-size: 10px;\n}\n.text--white[data-v-daadd296] {\n  color: white;\n}\n.text--category[data-v-daadd296] {\n  font-size: 0.7rem;\n  margin-bottom: 1rem;\n}\n@media (min-width: 768px) and (max-width: 1023px) {\n.text--category[data-v-daadd296] {\n    font-size: 0.9rem;\n}\n}\n@media (min-width: 1024px) {\n.text--category[data-v-daadd296] {\n    font-size: 1.1rem;\n}\n}\n.flex[data-v-daadd296] {\n  display: flex;\n}\n.justify-between[data-v-daadd296] {\n  justify-content: space-between;\n}\n.items-center[data-v-daadd296] {\n  align-items: center;\n}\n.wrapper[data-v-daadd296] {\n  position: relative;\n  padding: 10px;\n}\n.wrapper__front[data-v-daadd296] {\n  position: relative;\n  transition: all 250ms ease-out;\n  transition-delay: 300ms;\n}\n.wrapper__back[data-v-daadd296] {\n  position: absolute;\n  opacity: 0;\n  transition: all 250ms ease-out;\n  transition-delay: 100ms;\n  z-index: 999;\n}\n@media (min-width: 1024px) {\n.wrapper__back[data-v-daadd296] {\n    width: 100%;\n    top: 0;\n}\n}\n.wrapper:hover .wrapper__front[data-v-daadd296] {\n  opacity: 0;\n}\n.wrapper:hover .wrapper__back[data-v-daadd296] {\n  display: inline-block;\n  opacity: 1;\n  width: 100%;\n  transform: scale(1) translateY(-15%) translateX(-4%);\n}\n@media (min-width: 1024px) {\n.wrapper:hover .wrapper__back[data-v-daadd296] {\n    width: 100%;\n}\n}\n.card[data-v-daadd296] {\n  overflow: hidden;\n  background-color: #141414;\n  box-shadow: 0 0 10px 1px #0a0a0a;\n}\n.card--rounded[data-v-daadd296] {\n  border-radius: 10px;\n}\n.card--vote[data-v-daadd296] {\n  position: absolute;\n}\n.card__body[data-v-daadd296] {\n  padding: 1rem 0.65rem 0 0.65rem;\n}\n.card__icon[data-v-daadd296] {\n  width: 0.6rem;\n  height: 0.6rem;\n  fill: white;\n}\n@media (min-width: 768px) and (max-width: 1023px) {\n.card__icon[data-v-daadd296] {\n    width: 0.8rem;\n    height: 0.8rem;\n}\n}\n@media (min-width: 1024px) {\n.card__icon[data-v-daadd296] {\n    width: 1rem;\n    height: 1rem;\n}\n}\n.card__title[data-v-daadd296] {\n  color: white;\n  margin: 0;\n  max-width: -moz-fit-content;\n  max-width: fit-content;\n  overflow: hidden;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n}\n.btn[data-v-daadd296] {\n  padding: 0.5rem;\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  border: 2px solid rgba(255, 255, 255, 0.5);\n  cursor: pointer;\n  transition: all 250ms;\n}\n.btn--front[data-v-daadd296] {\n  margin: 0.3rem;\n}\n.btn--transparent[data-v-daadd296] {\n  background: transparent;\n}\n.btn--circle[data-v-daadd296] {\n  border-radius: 50%;\n}\n.btn[data-v-daadd296]:hover {\n  background: white;\n}\n.btn:hover .card__icon[data-v-daadd296] {\n  fill: #141414;\n}", ""]);
 
 // exports
 
@@ -3447,7 +3396,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".row[data-v-04c29797] {\n  min-height: 80vh;\n}\n.row .title-list[data-v-04c29797] {\n  position: absolute;\n  top: 0;\n  width: 80%;\n  left: 50%;\n  transform: translateX(-50%);\n  z-index: 10;\n}\n.row .title-list-trending[data-v-04c29797] {\n  position: absolute;\n  top: 0;\n  width: 80%;\n  left: 50%;\n  transform: translateX(-50%);\n  z-index: 10;\n}\n.row .prev[data-v-04c29797] {\n  opacity: 0;\n  position: absolute;\n  left: -40px;\n  bottom: 45%;\n  z-index: 1000000000000000000;\n  transition: opacity 0.5s ease-in-out; /* Add transition */\n}\n.row .next[data-v-04c29797] {\n  opacity: 0;\n  position: absolute;\n  right: -40px;\n  bottom: 45%;\n  z-index: 1000000000000000000;\n  transition: opacity 0.2s ease-in-out; /* Add transition */\n}\n.row .position-relative:hover .prev[data-v-04c29797], .row .position-relative:hover .next[data-v-04c29797] {\n  opacity: 1; /* Change opacity on hover of .cards-netflix */\n}\n.row .cards-netflix[data-v-04c29797] {\n  min-height: 640px;\n  display: flex;\n  align-items: center;\n  overflow-x: scroll;\n  overflow-y: hidden;\n  scrollbar-width: none; /* hide scrollbar for Firefox */\n  white-space: nowrap;\n  flex-wrap: nowrap;\n  background-image: url(https://media.tenor.com/BOu8ryjIR38AAAAC/sound-wave-wave.gif);\n  background-repeat: no-repeat;\n  background-position-x: center;\n  background-position-y: center;\n  background-size: cover;\n}\n.row .cards-netflix[data-v-04c29797]::-webkit-scrollbar {\n  display: none; /* hide scrollbar for Chrome, Safari, and Edge */\n}", ""]);
+exports.push([module.i, ".row[data-v-04c29797] {\n  min-height: 80vh;\n}\n.row .title-list[data-v-04c29797] {\n  position: absolute;\n  top: 20px;\n  width: 25%;\n  border: 1px solid rgb(39, 39, 39);\n  background: black;\n  padding: 4px 20px;\n  border-radius: 25px;\n  left: 50%;\n  transform: translateX(-50%);\n  z-index: 10;\n}\n.row .title-list-trending[data-v-04c29797] {\n  position: absolute;\n  top: 20px;\n  width: 25%;\n  border: 1px solid rgb(39, 39, 39);\n  background: black;\n  padding: 4px 20px;\n  border-radius: 25px;\n  left: 50%;\n  transform: translateX(-50%);\n  z-index: 10;\n}\n.row .prev[data-v-04c29797] {\n  opacity: 0;\n  position: absolute;\n  left: -40px;\n  bottom: 35%;\n  z-index: 1000000000000000000;\n  transition: opacity 0.5s ease-in-out; /* Add transition */\n}\n.row .next[data-v-04c29797] {\n  opacity: 0;\n  position: absolute;\n  right: -40px;\n  bottom: 35%;\n  z-index: 1000000000000000000;\n  transition: opacity 0.2s ease-in-out; /* Add transition */\n}\n.row .position-relative:hover .prev[data-v-04c29797], .row .position-relative:hover .next[data-v-04c29797] {\n  opacity: 1; /* Change opacity on hover of .cards-netflix */\n}\n.row .cards-netflix[data-v-04c29797] {\n  min-height: 460px;\n  display: flex;\n  align-items: flex-end;\n  overflow-x: scroll;\n  overflow-y: hidden;\n  scrollbar-width: none; /* hide scrollbar for Firefox */\n  white-space: nowrap;\n  flex-wrap: nowrap;\n  background-repeat: no-repeat;\n  background-position-x: center;\n  background-position-y: center;\n  background-size: cover;\n}\n.row .cards-netflix[data-v-04c29797]::-webkit-scrollbar {\n  display: none; /* hide scrollbar for Chrome, Safari, and Edge */\n}", ""]);
 
 // exports
 

@@ -1,6 +1,6 @@
 <template>
     <div class="container-lg">
-        <div class="row flex-column my-5 py-5">
+        <div class="row flex-column">
 
 
             <div v-if="!foundedMoviesGift.length > 0" class="position-relative">
@@ -20,13 +20,13 @@
                     </div>
                 </div>
             </div>
-            <!--            The position-relative class is used to set the positioning context for the movies list and arrow buttons.-->
+            <!-- The position-relative class is used to set the positioning context for the movies list and arrow buttons.-->
             <div v-if="foundedMoviesGift.length > 0" class="position-relative">
                 <img v-if="foundedMoviesGift.length > 0" :src="imagePath('movies.png')" alt="MoviesImage"
                      class="img-fluid title-list">
 
                 <!--                The ref attribute is used to create a reference to the cardsContainerMovie element, which is used by -->
-                <!--                the scrollCardsMovie method to scroll the movies list container.-->
+                <!--                The scrollCardsMovie method to scroll the movies list container.-->
                 <div ref="cardsContainerMovie" class="col-12 cards-netflix">
 
                     <!--                <h1 class="col-12 text-center">ᴍᴏᴠɪᴇꜱ</h1>-->
@@ -39,7 +39,6 @@
                     </div>
                 </div>
             </div>
-
 
             <div v-if="!foundedSeriesGift.length > 0" class="position-relative">
                 <img :src="imagePath('trendingseries.png')" alt="TrendingSeriesImage"
@@ -209,11 +208,15 @@ export default {
 .row {
     min-height: 80vh;
 
-
     .title-list {
         position: absolute;
-        top: 0;
-        width: 80%;
+        top: 20px;
+        width: 25%;
+
+        border: 1px solid rgba(39, 39, 39, 1);
+        background: black;
+        padding: 4px 20px;
+        border-radius: 25px;
 
         left: 50%;
         transform: translateX(-50%);
@@ -223,8 +226,13 @@ export default {
 
     .title-list-trending {
         position: absolute;
-        top: 0;
-        width: 80%;
+        top: 20px;
+        width: 25%;
+
+        border: 1px solid rgba(39, 39, 39, 1);
+        background: black;
+        padding: 4px 20px;
+        border-radius: 25px;
 
         left: 50%;
         transform: translateX(-50%);
@@ -237,7 +245,7 @@ export default {
 
         position: absolute;
         left: -40px;
-        bottom: 45%;
+        bottom: 35%;
 
         z-index: 999999999999999999;
 
@@ -250,7 +258,7 @@ export default {
 
         position: absolute;
         right: -40px;
-        bottom: 45%;
+        bottom: 35%;
 
         z-index: 999999999999999999;
 
@@ -265,10 +273,10 @@ export default {
 
     .cards-netflix {
 
-        min-height: 640px;
+        min-height: 460px;
 
         display: flex;
-        align-items: center;
+        align-items: flex-end;
 
         overflow-x: scroll;
         overflow-y: hidden;
@@ -278,7 +286,7 @@ export default {
         white-space: nowrap;
         flex-wrap: nowrap;
 
-        background-image: url(https://media.tenor.com/BOu8ryjIR38AAAAC/sound-wave-wave.gif);
+        //background-image: url(https://media.tenor.com/BOu8ryjIR38AAAAC/sound-wave-wave.gif);
         background-repeat: no-repeat;
         background-position-x: center;
         background-position-y: center;
