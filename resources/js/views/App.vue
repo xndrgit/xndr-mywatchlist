@@ -201,7 +201,8 @@ export default {
 body {
     background-color: black;
     color: #fff;
-    font-family: 'Gloria Hallelujah', cursive;
+    font-family: 'Josefin Slab', serif;
+    //font-family: 'Gloria Hallelujah', cursive;
 }
 
 // Styles for dark mode

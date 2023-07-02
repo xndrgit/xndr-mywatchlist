@@ -1924,7 +1924,7 @@ __webpack_require__.r(__webpack_exports__);
       apiUrlPerson: 'https://api.themoviedb.org/3/search/person',
       // srcLogo: 'https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png',
       searchAll: '',
-      selectedOption: null,
+      selectedOption: "📜 History",
       // founded datas da passare a chi vuoi
       foundedMovies: [],
       foundedSeries: [],
@@ -1999,7 +1999,7 @@ var render = function render() {
   }, [_c("nav", {
     staticClass: "col-12 navbar navbar-expand-lg navbar-dark"
   }, [_c("router-link", {
-    staticClass: "col-3 navbar-brand d-flex align-items-center justify-content-around",
+    staticClass: "navbar-brand d-flex align-items-center justify-content-around",
     attrs: {
       to: "/"
     }
@@ -2012,7 +2012,7 @@ var render = function render() {
   }), _vm._v(" "), _c("h2", {
     staticClass: "font-weight-bold mb-0"
   }, [_vm._v("MyWatchList")])]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("form", {
-    staticClass: "form-inline ml-auto col-6"
+    staticClass: "form-inline col-4"
   }, [_c("input", {
     directives: [{
       name: "model",
@@ -2020,7 +2020,7 @@ var render = function render() {
       value: _vm.searchAll,
       expression: "searchAll"
     }],
-    staticClass: "form-control mr-sm-1",
+    staticClass: "form-control col-12",
     attrs: {
       "aria-label": "Search",
       placeholder: "Search",
@@ -2036,7 +2036,7 @@ var render = function render() {
       }
     }
   }), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-danger my-2 my-sm-0",
+    staticClass: "btn",
     attrs: {
       type: "submit"
     },
@@ -2046,8 +2046,10 @@ var render = function render() {
         return _vm.$emit("searchAll", _vm.searchAll);
       }
     }
-  }, [_vm._v("Search\n            ")])]), _vm._v(" "), _c("div", {
-    staticClass: "select col-2"
+  }, [_c("i", {
+    staticClass: "fa-brands fa-searchengin fa-shake"
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "position-relative"
   }, [_c("select", {
     directives: [{
       name: "model",
@@ -2055,6 +2057,7 @@ var render = function render() {
       value: _vm.selectedOption,
       expression: "selectedOption"
     }],
+    staticClass: "history position-relative",
     attrs: {
       id: "format",
       name: "format"
@@ -2075,19 +2078,20 @@ var render = function render() {
       disabled: "",
       selected: ""
     }
-  }, [_vm._v("my hystory")]), _vm._v(" "), _vm._l(_vm.searchAllOldGift.slice().reverse(), function (log) {
+  }, [_vm._v("📜 Hystory")]), _vm._v(" "), _vm._l(_vm.searchAllOldGift.slice().reverse(), function (log) {
     return _c("option", {
       domProps: {
         value: log
       }
-    }, [_vm._v(_vm._s(log))]);
-  })], 2)])], 1)]);
+    }, [_vm._v("📌 " + _vm._s(log))]);
+  })], 2), _vm._v(" "), _c("span", {
+    staticClass: "fix-selected position-absolute"
+  }, [_vm._v("📜 Hystory")])])], 1)]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("select", {
-    staticClass: "select",
     attrs: {
       onchange: "window.location.href=this.value;"
     }
@@ -2096,19 +2100,19 @@ var staticRenderFns = [function () {
       disabled: "",
       selected: ""
     }
-  }, [_vm._v("🔎| Select")]), _vm._v(" "), _c("option", {
+  }, [_vm._v("🔎 Select")]), _vm._v(" "), _c("option", {
     attrs: {
       value: "/movies"
     }
-  }, [_vm._v("🎥| Movies")]), _vm._v(" "), _c("option", {
+  }, [_vm._v("🎥 Movies")]), _vm._v(" "), _c("option", {
     attrs: {
       value: "/series"
     }
-  }, [_vm._v("🎬| Series")]), _vm._v(" "), _c("option", {
+  }, [_vm._v("🎬 Series")]), _vm._v(" "), _c("option", {
     attrs: {
       value: "/persons"
     }
-  }, [_vm._v("👤| Persons")])]);
+  }, [_vm._v("👤 Persons")])]);
 }];
 render._withStripped = true;
 
@@ -6493,7 +6497,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "header[data-v-153bfd55] {\n  height: 10vh;\n  display: flex;\n  align-content: center;\n  justify-content: space-between;\n}\nheader img[data-v-153bfd55] {\n  max-height: 30px;\n}\nheader .select[data-v-153bfd55] {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  outline: 0;\n  box-shadow: none;\n  border-radius: 5px;\n  padding: 2px 6px;\n  text-align: start;\n  background: black;\n  color: white;\n}", ""]);
+exports.push([module.i, "header[data-v-153bfd55] {\n  height: 10vh;\n  display: flex;\n  align-content: center;\n  justify-content: space-between;\n}\nheader img[data-v-153bfd55] {\n  max-height: 30px;\n}\nheader select[data-v-153bfd55] {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  outline: 0;\n  border: 0;\n  border-radius: 25px;\n  padding: 6px 10px;\n  text-align: start;\n  background: rgba(39, 39, 39, 0.6);\n  color: white;\n  transition: 0.5s;\n}\nheader select[data-v-153bfd55]:hover {\n  background: rgb(39, 39, 39);\n}\nheader .fix-selected[data-v-153bfd55] {\n  top: 6px;\n  left: 18px;\n  pointer-events: none;\n}\nheader form input[data-v-153bfd55] {\n  position: relative;\n  border-radius: 25px;\n  padding: 6px 10px;\n  background: rgb(39, 39, 39);\n  border: 2px solid black;\n}\nheader form input[data-v-153bfd55]:focus {\n  background: rgba(39, 39, 39, 0.6);\n  color: white;\n}\nheader form button[data-v-153bfd55] {\n  position: absolute;\n  right: 16px;\n  font-size: 1rem;\n  background: rgba(39, 39, 39, 0.6);\n  border-radius: 117px;\n  padding: 3px 11px;\n  border-left: 8px;\n  color: white;\n}\nheader form button[data-v-153bfd55]:hover {\n  color: white;\n}", ""]);
 
 // exports
 

@@ -1,7 +1,7 @@
 <template>
     <header class="row">
         <nav class="col-12 navbar navbar-expand-lg navbar-dark">
-            <router-link class="col-3 navbar-brand d-flex align-items-center justify-content-around" to="/">
+            <router-link class=" navbar-brand d-flex align-items-center justify-content-around" to="/">
                 <img :src="imagePath('favicon.png')"
                      alt="Logo" class="img-fluid">
                 <!--                     height="30" :src="srcLogo">-->
@@ -20,27 +20,30 @@
             <!--                </ul>-->
 
 
-            <select class="select" onchange="window.location.href=this.value;">
-                <option disabled selected>🔎| Select</option>
-                <option value="/movies">🎥| Movies</option>
-                <option value="/series">🎬| Series</option>
-                <option value="/persons">👤| Persons</option>
+            <select onchange="window.location.href=this.value;">
+                <option disabled selected>🔎 Select</option>
+                <option value="/movies">🎥 Movies</option>
+                <option value="/series">🎬 Series</option>
+                <option value="/persons">👤 Persons</option>
             </select>
 
 
-            <form class="form-inline ml-auto col-6">
-                <input v-model="searchAll" aria-label="Search" class="form-control mr-sm-1" placeholder="Search"
+            <form class="form-inline col-4">
+                <input v-model="searchAll" aria-label="Search" class="form-control col-12" placeholder="Search"
                        type="search">
-                <button class="btn btn-danger my-2 my-sm-0" type="submit"
-                        @click.prevent="$emit('searchAll', searchAll)">Search
+                <button class="btn" type="submit"
+                        @click.prevent="$emit('searchAll', searchAll)">
+                    <i class="fa-brands fa-searchengin fa-shake"></i>
                 </button>
             </form>
 
-            <div class="select col-2">
-                <select id="format" v-model="selectedOption" name="format">
-                    <option disabled selected>my hystory</option>
-                    <option v-for="log in searchAllOldGift.slice().reverse()" :value="log">{{ log }}</option>
+
+            <div class="position-relative">
+                <select id="format" v-model="selectedOption" class="history position-relative" name="format">
+                    <option disabled selected>📜 Hystory</option>
+                    <option v-for="log in searchAllOldGift.slice().reverse()" :value="log">📌 {{ log }}</option>
                 </select>
+                <span class="fix-selected position-absolute">📜 Hystory</span>
             </div>
 
 
@@ -68,7 +71,7 @@ export default {
 
             // srcLogo: 'https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png',
             searchAll: '',
-            selectedOption: null,
+            selectedOption: "📜 History",
 
 
             // founded datas da passare a chi vuoi
@@ -146,26 +149,69 @@ header {
     }
 
 
-    .select {
+    select {
         -webkit-appearance: none;
         -moz-appearance: none;
         -ms-appearance: none;
         appearance: none;
-
         outline: 0;
-        box-shadow: none;
+        border: 0;
 
 
-        border-radius: 5px;
-        padding: 2px 6px;
+        border-radius: 25px;
+        padding: 6px 10px;
+
 
         text-align: start;
 
-        background: black;
+        background: rgba(39, 39, 39, 0.60);
         color: white;
 
-        &:hover {
+        transition: 0.5s;
 
+        &:hover {
+            background: rgba(39, 39, 39, 1);
+        }
+    }
+
+    .fix-selected {
+        top: 6px;
+        left: 18px;
+        pointer-events: none;
+    }
+
+
+    form {
+        input {
+            position: relative;
+
+            border-radius: 25px;
+            padding: 6px 10px;
+
+            background: rgba(39, 39, 39, 1);
+
+            border: 2px solid black;
+
+            &:focus {
+                background: rgba(39, 39, 39, 0.60);
+                color: white;
+            }
+        }
+
+        button {
+            position: absolute;
+            right: 16px;
+            font-size: 1rem;
+
+            background: rgba(39, 39, 39, 0.60);
+            border-radius: 117px;
+            padding: 3px 11px;
+            border-left: 8px;
+            color: white;
+
+            &:hover {
+                color: white;
+            }
         }
     }
 
