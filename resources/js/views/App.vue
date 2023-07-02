@@ -1,20 +1,18 @@
 <template>
     <div class="container-lg dark-mode">
+        <div>
+            <HeaderComponent :searchAllOldGift="searchAllOld" @searchAll="searchAllFunction" @update-data="updateData"/>
+            <router-view :foundedMoviesGift="foundedMovies" :foundedPersonsGift="foundedPersons"
+                         :foundedSeriesGift="foundedSeries"
 
+                         :foundedTrendingMoviesGift="foundedTrendingMovies"
+                         :foundedTrendingPersonsGift="foundedTrendingPersons"
+                         :foundedTrendingSeriesGift="foundedTrendingSeries"
+            >
+            </router-view>
+            <FooterComponent/>
+        </div>
 
-        <HeaderComponent :searchAllOldGift="searchAllOld" @searchAll="searchAllFunction" @update-data="updateData"/>
-
-
-        <router-view :foundedMoviesGift="foundedMovies" :foundedPersonsGift="foundedPersons"
-                     :foundedSeriesGift="foundedSeries"
-
-                     :foundedTrendingMoviesGift="foundedTrendingMovies"
-                     :foundedTrendingPersonsGift="foundedTrendingPersons"
-                     :foundedTrendingSeriesGift="foundedTrendingSeries"
-        >
-
-        </router-view>
-        <FooterComponent/>
     </div>
 </template>
 
@@ -30,10 +28,14 @@ import HomePage from "../pages/HomePage.vue";
 
 export default {
     name: 'App',
+    computed: {
+        // pc(){
+        //     return window.innerWidth >= 768;
+        // },
+    },
     components: {
         FooterComponent,
         HeaderComponent,
-
         HomePage,
     },
     data: function () {
@@ -62,6 +64,8 @@ export default {
         }
     },
     methods: {
+
+
         // stai salvando il risultato passato mediante la emit nella variabile searchMovies,
         // poi con getMovies richiami questa variabile, non necessaria, essendo che potresti passare il valore della emit direttamente alla funzione getMovies()
         searchAllFunction(result) {
@@ -197,6 +201,7 @@ export default {
 body {
     background-color: black;
     color: #fff;
+    font-family: 'Gloria Hallelujah', cursive;
 }
 
 // Styles for dark mode

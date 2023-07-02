@@ -9,6 +9,7 @@
                                      :key="movie.id" :movie="movie"/>
                 <img v-if="foundedMoviesGift.length > 0" :src="imagePath('movies.png')" alt="MoviesImage"
                      class="img-fluid title-list-trending">
+
                 <MoviesListComponent v-for="movie in foundedMoviesGift" v-if="foundedMoviesGift.length > 0"
                                      :key="movie.id" :movie="movie"/>
             </div>
@@ -33,7 +34,7 @@ export default {
     },
     methods: {
         imagePath(filename) {
-            return require(`../../../public/images/${filename}`);
+            return require(`../../../public/assets/${filename}`);
         },
     }
 }

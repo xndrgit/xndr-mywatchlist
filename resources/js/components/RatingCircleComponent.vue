@@ -26,38 +26,31 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-
     width: 40px;
     height: 40px;
-
     border-radius: 50%;
-
     text-align: center;
-    background-color: #999;
-
     font-family: 'Rubik Puddles', cursive;
-
-
     transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
 }
 
-.low {
+.rating-circle.low {
     background-color: #D3212C;
 }
 
-.mid {
+.rating-circle.mid {
     background-color: #FF980E;
 }
 
-.high {
+.rating-circle.high {
     background-color: #069C56;
 }
 
 .rating-vote {
-    display: block;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bold;
     color: black;
-    text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+    font-family: "Nunito", sans-serif;
 }
 </style>

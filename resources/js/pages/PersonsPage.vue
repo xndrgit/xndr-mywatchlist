@@ -33,7 +33,7 @@ export default {
     },
     methods: {
         imagePath(name) {
-            return require(`../../../public/images/${name}`);
+            return require(`../../../public/assets/${name}`);
         }
     }
 }

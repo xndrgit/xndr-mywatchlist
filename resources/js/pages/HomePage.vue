@@ -4,7 +4,7 @@
 
 
             <div v-if="!foundedMoviesGift.length > 0" class="position-relative">
-                <img :src="imagePath('trendingmovies.png')" alt="Movies Image"
+                <img :src="imagePath('trendingmovies.png')" alt="TrendingMoviesImage"
                      class="img-fluid title-list-trending">
                 <!--                The ref attribute is used to create a reference to the cardsContainerMovie element, which is used by -->
                 <!--                the scrollCardsMovie method to scroll the movies list container.-->
@@ -131,7 +131,7 @@ export default {
     },
     methods: {
         imagePath(filename) {
-            return require(`../../../public/images/${filename}`);
+            return require(`../../../public/assets/${filename}`);
         },
 
         scrollCardsMovie(direction) {
@@ -183,8 +183,10 @@ export default {
             });
         },
         scrollCardsPersons(direction) {
-            const currentPosition = this.$refs.cardsContainerPerson.scrollLeft;
-            const cardWidth = this.$refs.card[0].offsetWidth;
+            const cardsContainerPersons = this.$refs.cardsContainerPerson;
+            const cardWidth = cardsContainerPersons.querySelector('.card').offsetWidth;
+            const currentPosition = cardsContainerPersons.scrollLeft;
+
             let newPosition;
             if (direction === 'next') {
                 newPosition = currentPosition + (cardWidth * 3);
@@ -192,7 +194,7 @@ export default {
                 newPosition = currentPosition - (cardWidth * 3);
             }
 
-            this.$refs.cardsContainerPerson.scrollTo({
+            cardsContainerPersons.scrollTo({
                 left: newPosition,
                 behavior: "smooth"
             });
