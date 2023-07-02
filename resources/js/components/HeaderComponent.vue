@@ -43,7 +43,7 @@
                     <option disabled selected>📜 Hystory</option>
                     <option v-for="log in searchAllOldGift.slice().reverse()" :value="log">📌 {{ log }}</option>
                 </select>
-                <span class="fix-selected position-absolute">📜 Hystory</span>
+                <span class="fix-selected position-absolute">{{ selectedOption == null ? "📜 History" : "" }}</span>
             </div>
 
 
@@ -71,7 +71,7 @@ export default {
 
             // srcLogo: 'https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png',
             searchAll: '',
-            selectedOption: "📜 History",
+            selectedOption: null,
 
 
             // founded datas da passare a chi vuoi

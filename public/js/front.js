@@ -1941,7 +1941,7 @@ __webpack_require__.r(__webpack_exports__);
       apiUrlPerson: 'https://api.themoviedb.org/3/search/person',
       // srcLogo: 'https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png',
       searchAll: '',
-      selectedOption: "📜 History",
+      selectedOption: null,
       // founded datas da passare a chi vuoi
       foundedMovies: [],
       foundedSeries: [],
@@ -2664,7 +2664,7 @@ var render = function render() {
     }, [_vm._v("📌 " + _vm._s(log))]);
   })], 2), _vm._v(" "), _c("span", {
     staticClass: "fix-selected position-absolute"
-  }, [_vm._v("📜 Hystory")])])], 1)]);
+  }, [_vm._v(_vm._s(_vm.selectedOption == null ? "📜 History" : ""))])])], 1)]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
