@@ -2,9 +2,11 @@
     <div class="container-lg">
         <div class="row">
             <div class="col-12 cards-netflix">
-                <img v-if="!foundedPersonsGift.length > 0" :src="imagePath('trendingpersons.png')"
-                     alt="TrendingPersonsImage"
-                     class="img-fluid title-list-trending">
+                <div class="col-12 d-flex justify-content-center mt-4">
+                    <img v-if="!foundedPersonsGift.length > 0" :src="imagePath('trendingpersons.png')"
+                         alt="TrendingPersonsImage"
+                         class="img-fluid title-list-trending">
+                </div>
                 <PersonsListComponent v-for="person in foundedTrendingPersonsGift" v-if="!foundedPersonsGift.length > 0"
                                       :key="person.id" :person="person"/>
                 <img v-if="foundedPersonsGift.length > 0" :src="imagePath('persons.png')" alt="PersonsImage"
@@ -46,8 +48,11 @@ export default {
 
     .title-list-trending {
         height: fit-content;
-        width: fit-content;
-        padding: 1rem 10rem;
+        width: 50%;
+
+
+        background: black;
+        padding: 4px 20px;
     }
 
     .cards-netflix {

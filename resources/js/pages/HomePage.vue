@@ -113,6 +113,9 @@ export default {
     mounted() {
         console.log('HomePage mounted.')
     },
+    data: function () {
+        return {}
+    },
     components: {
         MoviesListComponent,
         SeriesListComponent,
@@ -142,6 +145,9 @@ export default {
 
             // Retrieve the current scroll position of the cards container element
             const currentScrollPos = cardsContainerMovie.scrollLeft;
+
+            this.isAtStartMovie = cardsContainerMovie.scrollLeft === 0;
+            this.isAtEndMovie = cardsContainerMovie.scrollLeft + cardsContainerMovie.offsetWidth === cardsContainerMovie.scrollWidth;
 
             // Calculate the new scroll position based on the direction passed in as an argument
             let newScrollPos;
@@ -267,7 +273,8 @@ export default {
 
 
     .position-relative:hover .prev, .position-relative:hover .next {
-        opacity: 1; /* Change opacity on hover of .cards-netflix */
+
+        opacity: 0.6; /* Change opacity on hover of .cards-netflix */
     }
 
 
