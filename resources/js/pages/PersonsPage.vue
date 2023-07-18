@@ -9,8 +9,11 @@
                 </div>
                 <PersonsListComponent v-for="person in foundedTrendingPersonsGift" v-if="!foundedPersonsGift.length > 0"
                                       :key="person.id" :person="person"/>
-                <img v-if="foundedPersonsGift.length > 0" :src="imagePath('persons.png')" alt="PersonsImage"
-                     class="img-fluid title-list-trending">
+                <div class="col-12 d-flex justify-content-center mt-4">
+                    <img v-if="foundedPersonsGift.length > 0" :src="imagePath('persons.png')" alt="PersonsImage"
+                         class="img-fluid title-list-trending">
+                </div>
+
                 <PersonsListComponent v-for="person in foundedPersonsGift" v-if="foundedPersonsGift.length > 0"
                                       :key="person.id" :person="person"/>
             </div>

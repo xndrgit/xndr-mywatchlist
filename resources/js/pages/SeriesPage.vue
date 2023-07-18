@@ -9,8 +9,11 @@
                 </div>
                 <SeriesListComponent v-for="tv in foundedTrendingSeriesGift" v-if="!foundedSeriesGift.length > 0"
                                      :key="tv.id" :tv="tv"/>
-                <img v-if="foundedSeriesGift.length > 0" :src="imagePath('series.png')" alt="SeriesImage"
-                     class="img-fluid title-list-trending">
+                <div class="col-12 d-flex justify-content-center mt-4">
+                    <img v-if="foundedSeriesGift.length > 0" :src="imagePath('series.png')" alt="SeriesImage"
+                         class="img-fluid title-list-trending">
+                </div>
+
                 <SeriesListComponent v-for="tv in foundedSeriesGift" v-if="foundedSeriesGift.length > 0" :key="tv.id"
                                      :tv="tv"/>
             </div>
