@@ -3,10 +3,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <span>&copy; 2023 My Watch List Fan Site</span>
+                    <span>&copy; 2023 My Watch List</span>
                 </div>
                 <div class="col-md-6 text-md-right">
-                    <span><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></span>
+                    <span><a href="https://github.com/XanderWorld">Privacy Policy</a> | <a
+                        href="https://github.com/XanderWorld">Terms of Service</a></span>
                 </div>
             </div>
         </div>

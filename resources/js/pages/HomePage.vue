@@ -4,8 +4,11 @@
 
 
             <div v-if="!foundedMoviesGift.length > 0" class="position-relative">
-                <img :src="imagePath('trendingmovies.png')" alt="TrendingMoviesImage"
-                     class="img-fluid title-list-trending">
+                <a href="/movies">
+                    <img :src="imagePath('trendingmovies.png')" alt="TrendingMoviesImage"
+                         class="img-fluid title-list-trending">
+                </a>
+
                 <!--                The ref attribute is used to create a reference to the cardsContainerMovie element, which is used by -->
                 <!--                the scrollCardsMovie method to scroll the movies list container.-->
                 <div ref="cardsContainerMovie" class="col-12 cards-netflix">
@@ -41,8 +44,10 @@
             </div>
 
             <div v-if="!foundedSeriesGift.length > 0" class="position-relative">
-                <img :src="imagePath('trendingseries.png')" alt="TrendingSeriesImage"
-                     class="img-fluid title-list-trending">
+                <a href="/series">
+                    <img :src="imagePath('trendingseries.png')" alt="TrendingSeriesImage"
+                         class="img-fluid title-list-trending">
+                </a>
                 <div ref="cardsContainerTv" class="col-12 cards-netflix">
                     <!--                <h1 class=" col-12 text-center">ꜱᴇʀɪᴇꜱ</h1>-->
                     <SeriesListComponent v-for="tv in foundedTrendingSeriesGift" :key="tv.id" :tv="tv"/>
@@ -70,8 +75,10 @@
             </div>
 
             <div v-if="!foundedPersonsGift.length > 0" class="position-relative">
-                <img :src="imagePath('trendingpersons.png')" alt="TrendingPersonsImage"
-                     class="img-fluid title-list-trending">
+                <a href="/persons">
+                    <img :src="imagePath('trendingpersons.png')" alt="TrendingPersonsImage"
+                         class="img-fluid title-list-trending">
+                </a>
                 <div ref="cardsContainerPerson" class="col-12 cards-netflix">
                     <PersonsListComponent v-for="person in foundedTrendingPersonsGift" v-if="person" :key="person.id"
                                           :person="person"/>
@@ -243,7 +250,12 @@ export default {
         left: 50%;
         transform: translateX(-50%);
 
+        cursor: pointer;
         z-index: 10;
+
+        &:hover {
+            background: white;
+        }
     }
 
     .prev {
