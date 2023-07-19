@@ -19,10 +19,13 @@
             </div>
             <div class="col-12 d-flex justify-content-around my-2">
                 <div>
-                    <button>Prev</button>
+                    <button @click="prevFunction">Prev</button>
                 </div>
                 <div>
-                    <button>Next</button>
+                    {{ this.page }}
+                </div>
+                <div>
+                    <button @click="nextFunction">Next</button>
                 </div>
             </div>
         </div>
@@ -44,10 +47,23 @@ export default {
         foundedMoviesGift: Array,
         foundedTrendingMoviesGift: Array,
     },
+    data: function () {
+        return {
+            page: 1,
+        }
+    },
     methods: {
         imagePath(filename) {
             return require(`../../../public/assets/${filename}`);
         },
+        nextFunction() {
+            this.page = this.page + 1;
+            this.$emit('nextPage', this.page)
+        },
+        prevFunction() {
+            this.page = this.page - 1;
+            this.$emit('prevPage', this.page)
+        }
     }
 }
 </script>

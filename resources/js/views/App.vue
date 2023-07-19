@@ -8,6 +8,9 @@
                          :foundedTrendingMoviesGift="foundedTrendingMovies"
                          :foundedTrendingPersonsGift="foundedTrendingPersons"
                          :foundedTrendingSeriesGift="foundedTrendingSeries"
+
+                         @nextPage="pageNextFunction"
+                         @prevPage="pagePrevFunction"
             >
             </router-view>
             <FooterComponent/>
@@ -45,6 +48,7 @@ export default {
             apiUrlMovie: 'https://api.themoviedb.org/3/search/movie',
             apiUrlTv: 'https://api.themoviedb.org/3/search/tv',
             apiUrlPerson: 'https://api.themoviedb.org/3/search/person',
+            page: 1,
 
             apiUrlTrendingMovie: 'https://api.themoviedb.org/3/trending/movie/day',
             apiUrlTrendingTv: 'https://api.themoviedb.org/3/trending/tv/day',
@@ -79,18 +83,18 @@ export default {
             console.log(`App.vue founded data edited`)
         },
         getMovies(wha) {
-            axios.get(`${this.apiUrlMovie}?api_key=${this.apiKey}&query=${wha}`)
+            axios.get(`${this.apiUrlMovie}?api_key=${this.apiKey}&query=${wha}&page=${this.page}`)
                 .then((result) => {
                     // console.log(result);
                     this.foundedMovies = result.data.results;
-                    console.log(this.foundedMovies);
+                    console.log(`${this.apiUrlMovie}?api_key=${this.apiKey}&query=${wha}&page=${this.page}`);
                 })
                 .catch((error) => {
                     console.warn(error)
                 })
         },
         getSeries(wha) {
-            axios.get(`${this.apiUrlTv}?api_key=${this.apiKey}&query=${wha}`)
+            axios.get(`${this.apiUrlTv}?api_key=${this.apiKey}&query=${wha}&page=${this.page}`)
                 .then((result) => {
                     // console.log(result);
                     this.foundedSeries = result.data.results;
@@ -101,7 +105,7 @@ export default {
                 })
         },
         getPersons(wha) {
-            axios.get(`${this.apiUrlPerson}?api_key=${this.apiKey}&query=${wha}`)
+            axios.get(`${this.apiUrlPerson}?api_key=${this.apiKey}&query=${wha}&page=${this.page}`)
                 .then((result) => {
                     // console.log(result);
                     this.foundedPersons = result.data.results;
@@ -113,7 +117,7 @@ export default {
         },
 
         getTrendingMovies(wha) {
-            axios.get(`${this.apiUrlTrendingMovie}?api_key=${this.apiKey}`)
+            axios.get(`${this.apiUrlTrendingMovie}?api_key=${this.apiKey}&page=${this.page}`)
                 .then((result) => {
                     // console.log(result);
                     this.foundedTrendingMovies = result.data.results;
@@ -141,6 +145,18 @@ export default {
                 .catch((error) => {
                     console.warn(error)
                 })
+        },
+        pageNextFunction(page) {
+            this.page = page;
+            console.log(this.page);
+            this.getMovies(this.searchAll);
+            this.getTrendingMovies();
+        },
+        pagePrevFunction(page) {
+            this.page = page;
+            console.log(this.page);
+            this.getMovies(this.searchAll);
+            this.getTrendingMovies();
         }
 
 
@@ -148,6 +164,8 @@ export default {
     watch: {
         // esegui tutte le volte che cambia il valore di searchMovies, richiami getMovies col newVal
         searchAll: function (newVal, oldVal) {
+
+            this.page = 1;
 
             // Store the old value in a separate variable or array, if is not present in the array
             if (!this.searchAllOld.includes(newVal)) {
