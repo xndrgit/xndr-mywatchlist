@@ -254,10 +254,23 @@ export default {
 <style lang="scss">
 // Default styles for light mode
 body {
-    background-color: black;
+    background: url("https://wallpapers.com/images/featured/movie-9pvmdtvz4cb0xl37.jpg");
+    background-position: center;
+    background-size: contain;
+
     color: #fff;
-    font-family: 'Josefin Slab', serif;
-    //font-family: 'Gloria Hallelujah', cursive;
+    //font-family: 'Josefin Slab', serif;
+    font-family: 'VT323', monospace;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 300%;
+    background: rgba(0, 0, 0, 0.85); /* Black background with 50% opacity */
 }
 
 // Styles for dark mode

@@ -1,12 +1,17 @@
 <template>
-    <div class="container-lg">
+    <div class="container-fluid">
         <div class="row flex-column">
 
 
             <div v-if="!foundedMoviesGift.length > 0" class="position-relative">
                 <a href="/movies">
-                    <img :src="imagePath('trendingmovies.png')" alt="TrendingMoviesImage"
-                         class="img-fluid title-list-trending">
+                    <span class="title-list-trending">
+                        Trending Movies
+                        <i class="fa-solid fa-arrow-trend-up fa-bounce" style="color: #0018ff;"></i>
+                    </span>
+
+                    <!--                    <img :src="imagePath('trendingmovies.png')" alt="TrendingMoviesImage"-->
+                    <!--                         class="img-fluid title-list-trending">-->
                 </a>
 
                 <!--                The ref attribute is used to create a reference to the cardsContainerMovie element, which is used by -->
@@ -25,8 +30,12 @@
             </div>
             <!-- The position-relative class is used to set the positioning context for the movies list and arrow buttons.-->
             <div v-if="foundedMoviesGift.length > 0" class="position-relative">
-                <img v-if="foundedMoviesGift.length > 0" :src="imagePath('movies.png')" alt="MoviesImage"
-                     class="img-fluid title-list">
+                 <span class="title-list-founded">
+                        Founded Movies
+                       <i class="fa-solid fa-check fa-bounce" style="color: #37ff00;"></i>
+                 </span>
+                <!--                <img v-if="foundedMoviesGift.length > 0" :src="imagePath('movies.png')" alt="MoviesImage"-->
+                <!--                     class="img-fluid title-list">-->
 
                 <!--                The ref attribute is used to create a reference to the cardsContainerMovie element, which is used by -->
                 <!--                The scrollCardsMovie method to scroll the movies list container.-->
@@ -45,8 +54,12 @@
 
             <div v-if="!foundedSeriesGift.length > 0" class="position-relative">
                 <a href="/series">
-                    <img :src="imagePath('trendingseries.png')" alt="TrendingSeriesImage"
-                         class="img-fluid title-list-trending">
+                     <span class="title-list-trending">
+                        Trending Series
+                        <i class="fa-solid fa-arrow-trend-up fa-bounce" style="color: #0018ff;"></i>
+                    </span>
+                    <!--                    <img :src="imagePath('trendingseries.png')" alt="TrendingSeriesImage"-->
+                    <!--                         class="img-fluid title-list-trending">-->
                 </a>
                 <div ref="cardsContainerTv" class="col-12 cards-netflix">
                     <!--                <h1 class=" col-12 text-center">ꜱᴇʀɪᴇꜱ</h1>-->
@@ -60,8 +73,13 @@
                 </div>
             </div>
             <div v-if="foundedSeriesGift.length > 0" class="position-relative">
-                <img v-if="foundedSeriesGift.length > 0" :src="imagePath('series.png')" alt="SeriesImage"
-                     class="img-fluid title-list">
+                <!--                <img v-if="foundedSeriesGift.length > 0" :src="imagePath('series.png')" alt="SeriesImage"-->
+                <!--                     class="img-fluid title-list">-->
+                <span class="title-list-founded">
+                        Founded Series
+                     <i class="fa-solid fa-check fa-bounce" style="color: #37ff00;"></i>
+                 </span>
+
                 <div ref="cardsContainerTv" class="col-12 cards-netflix">
                     <!--                <h1 class=" col-12 text-center">ꜱᴇʀɪᴇꜱ</h1>-->
                     <SeriesListComponent v-for="tv in foundedSeriesGift" :key="tv.id" :tv="tv"/>
@@ -76,8 +94,12 @@
 
             <div v-if="!foundedPersonsGift.length > 0" class="position-relative">
                 <a href="/persons">
-                    <img :src="imagePath('trendingpersons.png')" alt="TrendingPersonsImage"
-                         class="img-fluid title-list-trending">
+                    <span class="title-list-trending">
+                        Trending Persons
+                        <i class="fa-solid fa-arrow-trend-up fa-bounce" style="color: #0018ff;"></i>
+                    </span>
+                    <!--                    <img :src="imagePath('trendingpersons.png')" alt="TrendingPersonsImage"-->
+                    <!--                         class="img-fluid title-list-trending">-->
                 </a>
                 <div ref="cardsContainerPerson" class="col-12 cards-netflix">
                     <PersonsListComponent v-for="person in foundedTrendingPersonsGift" v-if="person" :key="person.id"
@@ -91,8 +113,12 @@
                 </div>
             </div>
             <div v-if="foundedPersonsGift.length > 0" class="position-relative">
-                <img v-if="foundedPersonsGift.length > 0" :src="imagePath('persons.png')" alt="PersonsImage"
-                     class="img-fluid title-list">
+                  <span class="title-list-founded">
+                        Founded Persons
+                        <i class="fa-solid fa-check fa-bounce" style="color: #37ff00;"></i>
+                 </span>
+                <!--                <img v-if="foundedPersonsGift.length > 0" :src="imagePath('persons.png')" alt="PersonsImage"-->
+                <!--                     class="img-fluid title-list">-->
                 <div ref="cardsContainerPerson" class="col-12 cards-netflix">
                     <PersonsListComponent v-for="person in foundedPersonsGift" v-if="person" :key="person.id"
                                           :person="person"/>
@@ -239,10 +265,11 @@ export default {
 
     .title-list-trending {
         position: absolute;
-        top: 20px;
-        width: 25%;
+        top: 60px;
 
         border: 1px solid rgba(39, 39, 39, 1);
+        color: white;
+        font-weight: bold;
         background: black;
         padding: 4px 20px;
         border-radius: 25px;
@@ -250,20 +277,38 @@ export default {
         left: 50%;
         transform: translateX(-50%);
 
+
         cursor: pointer;
         z-index: 10;
 
-        &:hover {
-            background: white;
-        }
+    }
+
+    .title-list-founded {
+        position: absolute;
+        top: 60px;
+
+        border: 1px solid rgba(39, 39, 39, 1);
+        color: #2eff00;
+        font-weight: bold;
+        background: black;
+        padding: 4px 20px;
+        border-radius: 25px;
+
+        left: 50%;
+        transform: translateX(-50%);
+
+
+        cursor: pointer;
+        z-index: 10;
+
     }
 
     .prev {
         opacity: 0;
 
         position: absolute;
-        left: -40px;
-        bottom: 35%;
+        left: 10px;
+        bottom: -30px;
 
         z-index: 999999999999999999;
 
@@ -275,8 +320,8 @@ export default {
         opacity: 0;
 
         position: absolute;
-        right: -40px;
-        bottom: 35%;
+        right: 10px;
+        bottom: -30px;
 
         z-index: 999999999999999999;
 

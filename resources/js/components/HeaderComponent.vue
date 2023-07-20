@@ -1,22 +1,24 @@
 <template>
     <header class="row">
-        <nav class="col-12 justify-content-center navbar navbar-expand-lg navbar-dark">
+        <nav class="col-12 justify-content-between navbar navbar-expand-lg navbar-dark">
 
-            <select onchange="window.location.href=this.value;">
-                <option disabled selected>🔎</option>
-                <option value="/">🪄 All</option>
-                <option value="/movies">🎥 Movies</option>
-                <option value="/series">🎬 Series</option>
-                <option value="/persons">👤 Persons</option>
-            </select>
+            <div class="col-4 d-flex align-items-center">
+                <select class="selectUrl" onchange="window.location.href=this.value;">
+                    <option disabled selected>🔎</option>
+                    <option value="/">🪄 All</option>
+                    <option value="/movies">🎥 Movies</option>
+                    <option value="/series">🎬 Series</option>
+                    <option value="/persons">👤 Persons</option>
+                </select>
 
+                <router-link class=" navbar-brand d-flex align-items-center justify-content-around" to="/">
+                    <img :src="imagePath('favicon.png')"
+                         alt="Logo" class="img-fluid logoImg">
+                    <!--                     height="30" :src="srcLogo">-->
+                    <h1 class="font-weight-bold mb-0 logoTitle">MyWatchList</h1>
+                </router-link>
+            </div>
 
-            <router-link class=" navbar-brand d-flex align-items-center justify-content-around" to="/">
-                <img :src="imagePath('favicon.png')"
-                     alt="Logo" class="img-fluid">
-                <!--                     height="30" :src="srcLogo">-->
-                <h2 class="font-weight-bold mb-0">MyWatchList</h2>
-            </router-link>
             <!--                <ul class="navbar-nav col-2">-->
             <!--                    <li class="nav-item">-->
             <!--                        <router-link class="nav-link" to="/movies">мσνιєѕ</router-link>-->
@@ -30,7 +32,7 @@
             <!--                </ul>-->
 
 
-            <form class="form-inline col-4">
+            <form class="form-inline col-2">
                 <input v-model="searchAll" aria-label="Search" class="form-control col-12" placeholder="Search"
                        type="search">
                 <button class="btn" type="submit"
@@ -39,13 +41,14 @@
                 </button>
             </form>
 
-
-            <div class="position-relative">
-                <select id="format" v-model="selectedOption" class="history position-relative" name="format">
-                    <option disabled selected>📜 Hystory</option>
-                    <option v-for="log in searchAllOldGift.slice().reverse()" :value="log">📌 {{ log }}</option>
-                </select>
-                <span class="fix-selected position-absolute">{{ selectedOption == null ? "📜 History" : "" }}</span>
+            <div class="col-6 d-flex justify-content-end">
+                <div class="position-relative">
+                    <select id="format" v-model="selectedOption" class="history position-relative" name="format">
+                        <option disabled selected>📜 Hystory</option>
+                        <option v-for="log in searchAllOldGift.slice().reverse()" :value="log">📌 {{ log }}</option>
+                    </select>
+                    <span class="fix-selected position-absolute">{{ selectedOption == null ? "📜 History" : "" }}</span>
+                </div>
             </div>
 
 
@@ -139,15 +142,26 @@ export default {
 <style lang="scss" scoped>
 header {
 
-    height: 10vh;
+    height: 15vh;
+    background: #0f0f0f;
 
     display: flex;
     align-content: center;
     justify-content: space-between;
 
+    opacity: 0.8;
 
-    img {
-        max-height: 30px;
+    .navbar-brand {
+        transition: 1s;
+
+        .logoImg {
+            height: 100px;
+            margin-left: 30px;
+        }
+
+        .logoTitle {
+            font-size: 3rem;
+        }
     }
 
 
@@ -161,13 +175,14 @@ header {
 
 
         border-radius: 25px;
-        padding: 6px 10px;
+        padding: 8px 10px;
 
 
         text-align: start;
 
-        background: rgba(39, 39, 39, 0.60);
+        background: black;
         color: white;
+        cursor: pointer;
 
         transition: 0.5s;
 
@@ -176,9 +191,17 @@ header {
         }
     }
 
+    .selectUrl {
+        width: 50px;
+        height: 50px;
+
+        font-size: 1.3rem;
+        border-radius: 50%;
+    }
+
     .fix-selected {
-        top: 6px;
-        left: 18px;
+        top: 8px;
+        left: 14px;
         pointer-events: none;
     }
 

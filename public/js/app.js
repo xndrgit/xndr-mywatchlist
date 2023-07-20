@@ -1997,22 +1997,24 @@ var render = function render() {
   return _c("header", {
     staticClass: "row"
   }, [_c("nav", {
-      staticClass: "col-12 justify-content-center navbar navbar-expand-lg navbar-dark"
+      staticClass: "col-12 justify-content-between navbar navbar-expand-lg navbar-dark"
+  }, [_c("div", {
+      staticClass: "col-4 d-flex align-items-center"
   }, [_vm._m(0), _vm._v(" "), _c("router-link", {
       staticClass: "navbar-brand d-flex align-items-center justify-content-around",
       attrs: {
           to: "/"
       }
   }, [_c("img", {
-      staticClass: "img-fluid",
+      staticClass: "img-fluid logoImg",
       attrs: {
           src: _vm.imagePath("favicon.png"),
           alt: "Logo"
       }
-  }), _vm._v(" "), _c("h2", {
-      staticClass: "font-weight-bold mb-0"
-  }, [_vm._v("MyWatchList")])]), _vm._v(" "), _c("form", {
-      staticClass: "form-inline col-4"
+  }), _vm._v(" "), _c("h1", {
+      staticClass: "font-weight-bold mb-0 logoTitle"
+  }, [_vm._v("MyWatchList")])])], 1), _vm._v(" "), _c("form", {
+      staticClass: "form-inline col-2"
   }, [_c("input", {
       directives: [{
           name: "model",
@@ -2022,16 +2024,16 @@ var render = function render() {
       }],
       staticClass: "form-control col-12",
       attrs: {
-      "aria-label": "Search",
-      placeholder: "Search",
-      type: "search"
-    },
-    domProps: {
-      value: _vm.searchAll
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
+          "aria-label": "Search",
+          placeholder: "Search",
+          type: "search"
+      },
+      domProps: {
+          value: _vm.searchAll
+      },
+      on: {
+          input: function input($event) {
+              if ($event.target.composing) return;
         _vm.searchAll = $event.target.value;
       }
     }
@@ -2049,35 +2051,37 @@ var render = function render() {
   }, [_c("i", {
     staticClass: "fa-brands fa-searchengin fa-shake"
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "position-relative"
+      staticClass: "col-6 d-flex justify-content-end"
+  }, [_c("div", {
+      staticClass: "position-relative"
   }, [_c("select", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.selectedOption,
-      expression: "selectedOption"
-    }],
-    staticClass: "history position-relative",
-    attrs: {
-      id: "format",
-      name: "format"
-    },
-    on: {
-      change: function change($event) {
-        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
-          return o.selected;
-        }).map(function (o) {
-          var val = "_value" in o ? o._value : o.value;
-          return val;
-        });
-        _vm.selectedOption = $event.target.multiple ? $$selectedVal : $$selectedVal[0];
+      directives: [{
+          name: "model",
+          rawName: "v-model",
+          value: _vm.selectedOption,
+          expression: "selectedOption"
+      }],
+      staticClass: "history position-relative",
+      attrs: {
+          id: "format",
+          name: "format"
+      },
+      on: {
+          change: function change($event) {
+              var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+                  return o.selected;
+              }).map(function (o) {
+                  var val = "_value" in o ? o._value : o.value;
+                  return val;
+              });
+              _vm.selectedOption = $event.target.multiple ? $$selectedVal : $$selectedVal[0];
+          }
       }
-    }
   }, [_c("option", {
-    attrs: {
-      disabled: "",
-        selected: ""
-    }
+      attrs: {
+          disabled: "",
+          selected: ""
+      }
   }, [_vm._v("📜 Hystory")]), _vm._v(" "), _vm._l(_vm.searchAllOldGift.slice().reverse(), function (log) {
       return _c("option", {
           domProps: {
@@ -2086,15 +2090,16 @@ var render = function render() {
       }, [_vm._v("📌 " + _vm._s(log))]);
   })], 2), _vm._v(" "), _c("span", {
       staticClass: "fix-selected position-absolute"
-  }, [_vm._v(_vm._s(_vm.selectedOption == null ? "📜 History" : ""))])])], 1)]);
+  }, [_vm._v(_vm._s(_vm.selectedOption == null ? "📜 History" : ""))])])])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("select", {
-    attrs: {
-      onchange: "window.location.href=this.value;"
-    }
+      staticClass: "selectUrl",
+      attrs: {
+          onchange: "window.location.href=this.value;"
+      }
   }, [_c("option", {
       attrs: {
           disabled: "",
@@ -6501,7 +6506,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "header[data-v-153bfd55] {\n  height: 10vh;\n  display: flex;\n  align-content: center;\n  justify-content: space-between;\n}\nheader img[data-v-153bfd55] {\n  max-height: 30px;\n}\nheader select[data-v-153bfd55] {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  outline: 0;\n  border: 0;\n  border-radius: 25px;\n  padding: 6px 10px;\n  text-align: start;\n  background: rgba(39, 39, 39, 0.6);\n  color: white;\n  transition: 0.5s;\n}\nheader select[data-v-153bfd55]:hover {\n  background: rgb(39, 39, 39);\n}\nheader .fix-selected[data-v-153bfd55] {\n  top: 6px;\n  left: 18px;\n  pointer-events: none;\n}\nheader form input[data-v-153bfd55] {\n  position: relative;\n  border-radius: 25px;\n  padding: 6px 10px;\n  background: rgb(39, 39, 39);\n  border: 2px solid black;\n}\nheader form input[data-v-153bfd55]:focus {\n  background: rgba(39, 39, 39, 0.6);\n  color: white;\n}\nheader form button[data-v-153bfd55] {\n  position: absolute;\n  right: 16px;\n  font-size: 1rem;\n  background: rgba(39, 39, 39, 0.6);\n  border-radius: 117px;\n  padding: 3px 11px;\n  border-left: 8px;\n  color: white;\n}\nheader form button[data-v-153bfd55]:hover {\n  color: white;\n}", ""]);
+            exports.push([module.i, "header[data-v-153bfd55] {\n  height: 15vh;\n  background: #0f0f0f;\n  display: flex;\n  align-content: center;\n  justify-content: space-between;\n  opacity: 0.8;\n}\nheader .navbar-brand[data-v-153bfd55] {\n  transition: 1s;\n}\nheader .navbar-brand .logoImg[data-v-153bfd55] {\n  height: 100px;\n  margin-left: 30px;\n}\nheader .navbar-brand .logoTitle[data-v-153bfd55] {\n  font-size: 3rem;\n}\nheader select[data-v-153bfd55] {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  outline: 0;\n  border: 0;\n  border-radius: 25px;\n  padding: 8px 10px;\n  text-align: start;\n  background: black;\n  color: white;\n  cursor: pointer;\n  transition: 0.5s;\n}\nheader select[data-v-153bfd55]:hover {\n  background: rgb(39, 39, 39);\n}\nheader .selectUrl[data-v-153bfd55] {\n  width: 50px;\n  height: 50px;\n  font-size: 1.3rem;\n  border-radius: 50%;\n}\nheader .fix-selected[data-v-153bfd55] {\n  top: 8px;\n  left: 14px;\n  pointer-events: none;\n}\nheader form input[data-v-153bfd55] {\n  position: relative;\n  border-radius: 25px;\n  padding: 6px 10px;\n  background: rgb(39, 39, 39);\n  border: 2px solid black;\n}\nheader form input[data-v-153bfd55]:focus {\n  background: rgba(39, 39, 39, 0.6);\n  color: white;\n}\nheader form button[data-v-153bfd55] {\n  position: absolute;\n  right: 16px;\n  font-size: 1rem;\n  background: rgba(39, 39, 39, 0.6);\n  border-radius: 117px;\n  padding: 3px 11px;\n  border-left: 8px;\n  color: white;\n}\nheader form button[data-v-153bfd55]:hover {\n  color: white;\n}", ""]);
 
 // exports
 
@@ -50762,12 +50767,13 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
             /***/
         }),
 
-/***/ "./resources/sass/app.scss":
-/*!*********************************!*\
-  !*** ./resources/sass/app.scss ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+        /***/
+        "./resources/sass/app.scss":
+        /*!*********************************!*\
+          !*** ./resources/sass/app.scss ***!
+          \*********************************/
+        /*! no static exports found */
+        /***/ (function (module, exports) {
 
 // removed by extract-text-webpack-plugin
 

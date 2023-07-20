@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper col-3">
+    <div class="wrapper col-2">
         <div ref="card" class="card card--rounded wrapper__front">
             <div class="card__header">
                 <!--                <img-->
