@@ -17,15 +17,21 @@
                 <MoviesListComponent v-for="movie in foundedMoviesGift" v-if="foundedMoviesGift.length > 0"
                                      :key="movie.id" :movie="movie"/>
             </div>
-            <div class="col-12 d-flex justify-content-around my-2">
+            <div class="col-12 d-flex justify-content-around my-5">
                 <div>
-                    <button @click="prevFunction">Prev</button>
+                    <button @click="prevMoviesFunction">Prev</button>
                 </div>
                 <div>
-                    {{ this.page }}
+                    <div v-if="foundedMoviesGift.length > 0">
+                        {{ this.pageMovies }}
+                    </div>
+                    <div v-if="!foundedMoviesGift.length > 0">
+                        {{ this.pageTrendingMovies }}
+                    </div>
+
                 </div>
                 <div>
-                    <button @click="nextFunction">Next</button>
+                    <button @click="nextMoviesFunction">Next</button>
                 </div>
             </div>
         </div>
@@ -49,21 +55,40 @@ export default {
     },
     data: function () {
         return {
-            page: 1,
+            pageMovies: 1,
+            pageTrendingMovies: 1,
         }
     },
     methods: {
         imagePath(filename) {
             return require(`../../../public/assets/${filename}`);
         },
-        nextFunction() {
-            this.page = this.page + 1;
-            this.$emit('nextPage', this.page)
+        nextMoviesFunction() {
+
+            if (this.foundedMoviesGift.length > 0) {
+                this.pageMovies = this.pageMovies + 1;
+                this.$emit('nextMoviesPage', this.pageMovies);
+            } else {
+                this.pageTrendingMovies = this.pageTrendingMovies + 1;
+                this.$emit('nextTrendingMoviesPage', this.pageTrendingMovies);
+            }
+
+
         },
-        prevFunction() {
-            this.page = this.page - 1;
-            this.$emit('prevPage', this.page)
-        }
+        prevMoviesFunction() {
+
+            if (this.foundedMoviesGift.length > 0) {
+                this.pageMovies = this.pageMovies - 1;
+                this.$emit('prevMoviesPage', this.pageMovies);
+            } else {
+                if (this.pageTrendingMovies > 1) {
+                    this.pageTrendingMovies = this.pageTrendingMovies - 1;
+                    this.$emit('prevTrendingMoviesPage', this.pageTrendingMovies);
+                }
+            }
+
+
+        },
     }
 }
 </script>

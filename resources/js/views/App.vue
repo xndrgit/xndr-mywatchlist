@@ -9,8 +9,14 @@
                          :foundedTrendingPersonsGift="foundedTrendingPersons"
                          :foundedTrendingSeriesGift="foundedTrendingSeries"
 
-                         @nextPage="pageNextFunction"
-                         @prevPage="pagePrevFunction"
+                         @nextMoviesPage="pageNextMoviesFunction"
+                         @nextSeriesPage="pageNextSeriesFunction"
+
+                         @nextTrendingMoviesPage="pageNextTrendingMoviesFunction"
+                         @prevMoviesPage="pagePrevMoviesFunction"
+
+                         @prevSeriesPage="pagePrevSeriesFunction"
+                         @prevTrendingMoviesPage="pagePrevTrendingMoviesFunction"
             >
             </router-view>
             <FooterComponent/>
@@ -48,7 +54,14 @@ export default {
             apiUrlMovie: 'https://api.themoviedb.org/3/search/movie',
             apiUrlTv: 'https://api.themoviedb.org/3/search/tv',
             apiUrlPerson: 'https://api.themoviedb.org/3/search/person',
-            page: 1,
+
+            pageMovies: 1,
+            pageSeries: 1,
+            pagePersons: 1,
+
+            pageTrendingMovies: 1,
+            pageTrendingSeries: 1,
+            pageTrendingPersons: 1,
 
             apiUrlTrendingMovie: 'https://api.themoviedb.org/3/trending/movie/day',
             apiUrlTrendingTv: 'https://api.themoviedb.org/3/trending/tv/day',
@@ -83,18 +96,18 @@ export default {
             console.log(`App.vue founded data edited`)
         },
         getMovies(wha) {
-            axios.get(`${this.apiUrlMovie}?api_key=${this.apiKey}&query=${wha}&page=${this.page}`)
+            axios.get(`${this.apiUrlMovie}?api_key=${this.apiKey}&query=${wha}&page=${this.pageMovies}`)
                 .then((result) => {
                     // console.log(result);
                     this.foundedMovies = result.data.results;
-                    console.log(`${this.apiUrlMovie}?api_key=${this.apiKey}&query=${wha}&page=${this.page}`);
+                    console.log(`${this.apiUrlMovie}?api_key=${this.apiKey}&query=${wha}&page=${this.pageMovies}`);
                 })
                 .catch((error) => {
                     console.warn(error)
                 })
         },
         getSeries(wha) {
-            axios.get(`${this.apiUrlTv}?api_key=${this.apiKey}&query=${wha}&page=${this.page}`)
+            axios.get(`${this.apiUrlTv}?api_key=${this.apiKey}&query=${wha}&page=${this.pageSeries}`)
                 .then((result) => {
                     // console.log(result);
                     this.foundedSeries = result.data.results;
@@ -105,7 +118,7 @@ export default {
                 })
         },
         getPersons(wha) {
-            axios.get(`${this.apiUrlPerson}?api_key=${this.apiKey}&query=${wha}&page=${this.page}`)
+            axios.get(`${this.apiUrlPerson}?api_key=${this.apiKey}&query=${wha}&page=${this.pagePersons}`)
                 .then((result) => {
                     // console.log(result);
                     this.foundedPersons = result.data.results;
@@ -117,17 +130,17 @@ export default {
         },
 
         getTrendingMovies(wha) {
-            axios.get(`${this.apiUrlTrendingMovie}?api_key=${this.apiKey}&page=${this.page}`)
+            axios.get(`${this.apiUrlTrendingMovie}?api_key=${this.apiKey}&page=${this.pageTrendingMovies}`)
                 .then((result) => {
                     // console.log(result);
                     this.foundedTrendingMovies = result.data.results;
                 })
                 .catch((error) => {
-                    console.warn(error)
+                    console.warn(error);
                 })
         },
         getTrendingSeries(wha) {
-            axios.get(`${this.apiUrlTrendingTv}?api_key=${this.apiKey}`)
+            axios.get(`${this.apiUrlTrendingTv}?api_key=${this.apiKey}&page=${this.pageTrendingSeries}`)
                 .then((result) => {
                     // console.log(result);
                     this.foundedTrendingSeries = result.data.results;
@@ -137,7 +150,7 @@ export default {
                 })
         },
         getTrendingPersons(wha) {
-            axios.get(`${this.apiUrlTrendingPerson}?api_key=${this.apiKey}`)
+            axios.get(`${this.apiUrlTrendingPerson}?api_key=${this.apiKey}&page=${this.pageTrendingPersons}`)
                 .then((result) => {
                     this.foundedTrendingPersons = result.data.results;
                     console.log(this.foundedTrendingPersons);
@@ -146,17 +159,41 @@ export default {
                     console.warn(error)
                 })
         },
-        pageNextFunction(page) {
-            this.page = page;
-            console.log(this.page);
+        pageNextMoviesFunction(page) {
+            this.pageMovies = page;
+            // console.log(this.pageMovies);
+            this.getMovies(this.searchAll);
+        },
+        pagePrevMoviesFunction(page) {
+            this.pageMovies = page;
+            console.log(this.pageMovies);
             this.getMovies(this.searchAll);
             this.getTrendingMovies();
         },
-        pagePrevFunction(page) {
-            this.page = page;
-            console.log(this.page);
-            this.getMovies(this.searchAll);
+
+        pageNextTrendingMoviesFunction(page) {
+            this.pageTrendingMovies = page;
+            // console.log(this.pageTrendingMovies);
             this.getTrendingMovies();
+        },
+        pagePrevTrendingMoviesFunction(page) {
+            this.pageTrendingMovies = page;
+            // console.log(this.pageTrendingMovies);
+            this.getTrendingMovies();
+        },
+
+
+        pageNextSeriesFunction(page) {
+            this.pageSeries = page;
+            console.log(this.pageSeries);
+            this.getSeries(this.searchAll);
+            this.getTrendingSeries();
+        },
+        pagePrevSeriesFunction(page) {
+            this.pageSeries = page;
+            console.log(this.pageSeries);
+            this.getSeries(this.searchAll);
+            this.getTrendingSeries();
         }
 
 
