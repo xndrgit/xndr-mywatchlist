@@ -1,5 +1,5 @@
 <template>
-    <div class="container-lg dark-mode">
+    <div class="container-fluid dark-mode">
         <div>
             <HeaderComponent :searchAllOldGift="searchAllOld" @searchAll="searchAllFunction" @update-data="updateData"/>
             <router-view :foundedMoviesGift="foundedMovies" :foundedPersonsGift="foundedPersons"

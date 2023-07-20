@@ -1,6 +1,16 @@
 <template>
     <header class="row">
-        <nav class="col-12 navbar navbar-expand-lg navbar-dark">
+        <nav class="col-12 justify-content-center navbar navbar-expand-lg navbar-dark">
+
+            <select onchange="window.location.href=this.value;">
+                <option disabled selected>🔎</option>
+                <option value="/">🪄 All</option>
+                <option value="/movies">🎥 Movies</option>
+                <option value="/series">🎬 Series</option>
+                <option value="/persons">👤 Persons</option>
+            </select>
+
+
             <router-link class=" navbar-brand d-flex align-items-center justify-content-around" to="/">
                 <img :src="imagePath('favicon.png')"
                      alt="Logo" class="img-fluid">
@@ -18,15 +28,6 @@
             <!--                        <router-link class="nav-link" to="/persons">ρєяѕσиѕ</router-link>-->
             <!--                    </li>-->
             <!--                </ul>-->
-
-
-            <select onchange="window.location.href=this.value;">
-                <option disabled selected>🔎 Select</option>
-                <option value="/">🪄 All</option>
-                <option value="/movies">🎥 Movies</option>
-                <option value="/series">🎬 Series</option>
-                <option value="/persons">👤 Persons</option>
-            </select>
 
 
             <form class="form-inline col-4">
